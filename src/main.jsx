@@ -10,7 +10,7 @@ import ProductsPage from "./pages/ProductsPage.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    Component: MainLayout,
+    Component: App,
     children: [
       {
         index: true,
