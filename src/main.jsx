@@ -14,6 +14,7 @@ import ProductDetails, {
   loader as productDetailsLoader,
 } from "./pages/ProductDetails.jsx";
 import Register from "./components/Register/Register.jsx";
+import LocationPage from "./pages/LocationPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         Component: CheckoutPage,
+      },
+      {
+        path: "/locations",
+        Component: LocationPage,
       },
       { path: "/login", Component: Login },
     ],
