@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 function AccordionItem({ title, children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,11 +19,20 @@ function AccordionItem({ title, children }) {
           )}
         </span>
       </button>
-      {isOpen && (
-        <div className="text-sm text-gray-700 leading-relaxed pb-4">
-          {children}
-        </div>
-      )}
+      <AnimatePresence initial={false} mode="wait">
+        {isOpen && (
+          <motion.div
+            key="content"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 200, duration: 0.3 }}
+            className="text-sm text-gray-700 leading-relaxed pb-4"
+          >
+            <div>{children}</div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
