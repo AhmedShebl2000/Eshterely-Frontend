@@ -26,7 +26,9 @@ export function fetchProductByCategory(category) {
   return async function (dispatch) {
     try {
       dispatch(fetchProductsStart());
-      const res = await fetch(`http://localhost:5000/api/${category}`);
+      const res = await fetch(
+        `https://eshterely.up.railway.app/api/${category}`
+      );
       const data = await res.json();
       dispatch(fetchProductsSuccess(data));
     } catch (error) {
