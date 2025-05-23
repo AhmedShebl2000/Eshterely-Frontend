@@ -25,9 +25,23 @@ function VariantsProduct() {
             {/* Left Arrow */}
             <button
               onClick={prevImage}
-              className="absolute left-0 z-10 bg-gray-700/80 hover:bg-gray-900 text-white rounded-full w-10 h-10 flex items-center justify-center"
+              className="cursor-pointer absolute left-0 z-10 bg-gray-700/80 hover:bg-gray-900 text-white rounded-full w-10 h-10 flex items-center justify-center"
             >
-              &lt;
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                width="24"
+                height="24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
             </button>
             {/* Image */}
             <img
@@ -41,7 +55,7 @@ function VariantsProduct() {
                 <button
                   key={idx}
                   onClick={() => setCurrent(idx)}
-                  className={`w-2 h-2 rounded-full transition-all ${
+                  className={`cursor-pointer w-2 h-2 rounded-full transition-all ${
                     current === idx ? "bg-gray-900" : "bg-gray-400"
                   }`}
                   aria-label={`Go to image ${idx + 1}`}
@@ -51,9 +65,23 @@ function VariantsProduct() {
             {/* Right Arrow */}
             <button
               onClick={nextImage}
-              className="absolute right-0 z-10 bg-gray-700/80 hover:bg-gray-900 text-white rounded-full w-10 h-10 flex items-center justify-center"
+              className="cursor-pointer absolute right-0 z-10 bg-gray-700/80 hover:bg-gray-900 text-white rounded-full w-10 h-10 flex items-center justify-center"
             >
-              &gt;
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                width="24"
+                height="24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
             </button>
           </div>
         </div>
