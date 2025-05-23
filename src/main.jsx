@@ -8,12 +8,10 @@ import ProductsPage from "./pages/ProductsPage.jsx";
 import store from "./redux/store.jsx";
 import { Provider } from "react-redux";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
-import Register from "./components/Register/Register.jsx";
 
 import ProductDetails, {
   loader as productDetailsLoader,
 } from "./pages/ProductDetails.jsx";
-
 
 const router = createBrowserRouter([
   {
@@ -22,7 +20,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: Register,
+        Component: HomePage,
       },
       {
         path: "/products/:category",

@@ -19,12 +19,9 @@ function ProductCard({ data, productType }) {
   };
 
   return (
-    <div className={`bg-[#FAFAFA] flex flex-col gap-2 h-full cursor-pointer`}>
-
     <div
       className={`bg-[#FAFAFA] flex flex-col min-h-[550px] gap-2 h-full cursor-pointer`}
     >
-
       <div className="flex justify-between items-center mb-1">
         <h5 className="text-[11px] font-medium">{data.name}</h5>
         <div className="bg-white">
