@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router";
+import { AnimatePresence, motion } from "framer-motion";
 
 function VariantsProduct() {
   const [current, setCurrent] = useState(0);
@@ -17,7 +18,13 @@ function VariantsProduct() {
   }
 
   return (
-    <div className="w-full bg-white px-4 md:px-16 min-h-screen flex items-center">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 2 }}
+      viewport={{ once: true }}
+      className="w-full bg-white px-4 md:px-16 min-h-screen flex items-center"
+    >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 w-full">
         {/* Left: Product Image */}
         <div className="flex-1 flex justify-center">
@@ -44,11 +51,18 @@ function VariantsProduct() {
               </svg>
             </button>
             {/* Image */}
-            <img
-              src={images[current]}
-              alt="Beovision Theatre Ferrari Edition"
-              className="mx-auto w-full max-w-md object-contain"
-            />
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={images[current]}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ type: "spring", duration: 0.5 }}
+                src={images[current]}
+                alt="Beovision Theatre Ferrari Edition"
+                className="mx-auto w-full max-w-md object-contain"
+              />
+            </AnimatePresence>
             {/* Indicator dots */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
               {images.map((_, idx) => (
@@ -121,7 +135,7 @@ function VariantsProduct() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

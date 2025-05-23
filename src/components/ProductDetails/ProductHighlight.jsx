@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router";
+import { motion } from "framer-motion";
 
 function ProductHighlight() {
   const { hero_section_2 } = useLoaderData();
@@ -6,7 +7,13 @@ function ProductHighlight() {
   const isVideo = hero_section_2.banner?.match(/\.(mp4|webm|ogg)$/i);
 
   return (
-    <div className="relative h-screen w-full shadow-lg p-8 my-8 flex items-center justify-center overflow-hidden">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
+      className="relative h-screen w-full shadow-lg p-8 my-8 flex items-center justify-center overflow-hidden"
+    >
       {isVideo ? (
         <video
           className="absolute inset-0 object-cover w-full h-full"
@@ -33,7 +40,7 @@ function ProductHighlight() {
           {hero_section_2.slogan}
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

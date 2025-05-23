@@ -2,6 +2,7 @@ import { useState } from "react";
 import ProductColors from "./productColors/ProductColors";
 import ProductCardFooter from "./productFooter/ProductCardFooter";
 import ProductCard from "./card/ProductCard";
+import { motion } from "framer-motion";
 
 import { Link } from "react-router";
 
@@ -15,13 +16,17 @@ function Products({ data, index, productType }) {
       className={`bg-[#FAFAFA] flex flex-col gap-2 h-full cursor-pointer relative overflow-hidden`}
       to={`${data._id}`}
     >
-      <div
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
         className={`${
           openColors ? "opacity-0 " : "opacity-100"
         } transition-opacity duration-300 h-full`}
       >
         <ProductCard data={data} productType={productType} />
-      </div>
+      </motion.div>
 
       <div
         className={`absolute inset-0 transition-transform duration-500 ease-in-out ${
