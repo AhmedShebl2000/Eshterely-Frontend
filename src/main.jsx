@@ -10,6 +10,11 @@ import { Provider } from "react-redux";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
 import Register from "./components/Register/Register.jsx";
 
+import ProductDetails, {
+  loader as productDetailsLoader,
+} from "./pages/ProductDetails.jsx";
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +27,11 @@ const router = createBrowserRouter([
       {
         path: "/products/:category",
         Component: ProductsPage,
+      },
+      {
+        path: "/products/:category/:productId",
+        Component: ProductDetails,
+        loader: productDetailsLoader,
       },
       {
         path: "/checkout",

@@ -7,6 +7,9 @@ import ErrorFetchingData from "../components/ErrorFetchingData";
 import Products from "../components/products/Products";
 import ProductCategory from "../components/products/subCategory/ProductCategory";
 
+import SignUp from "../components/ProductDetails/Signup";
+
+
 export default function ProductsPage() {
   const { category } = useParams();
   const dispatch = useDispatch();
@@ -67,6 +70,8 @@ export default function ProductsPage() {
           </div>
         </div>
       )}
+
+      <SignUp />
     </div>
   );
 }
