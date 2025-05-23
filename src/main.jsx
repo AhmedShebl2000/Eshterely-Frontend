@@ -12,6 +12,7 @@ import CheckoutPage from "./pages/CheckoutPage.jsx";
 import ProductDetails, {
   loader as productDetailsLoader,
 } from "./pages/ProductDetails.jsx";
+import Register from "./components/Register/Register.jsx";
 
 const router = createBrowserRouter([
   {

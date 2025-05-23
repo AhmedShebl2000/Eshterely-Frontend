@@ -2,6 +2,8 @@ import { useFormik } from "formik";
 import Button from "../../UI/Button";
 import { registrationSchema } from "../../schemas";
 import { motion } from "framer-motion";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
 const formVariants = {
   hidden: {
@@ -23,8 +25,27 @@ const inputVariants = {
 };
 
 function RegistrationForm() {
-  function onSubmit() {
-    console.log("submitted");
+  const navigate = useNavigate();
+
+  async function onSubmit() {
+    const newUser = {
+      first_name: values.firstName,
+      last_name: values.lastName,
+      email: values.email,
+      password: values.password,
+    };
+
+    try {
+      const res = await axios.post(
+        "https://eshterely.up.railway.app/api/auth/register",
+        newUser
+      );
+      console.log(res.data);
+      resetForm();
+      navigate("/products/speakers");
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const {
@@ -35,6 +56,7 @@ function RegistrationForm() {
     handleChange,
     handleSubmit,
     handleBlur,
+    resetForm,
   } = useFormik({
     initialValues: {
       firstName: "",
@@ -220,7 +242,12 @@ function RegistrationForm() {
           animate="visible"
           className="flex justify-center font-semibold"
         >
-          <Button>Create Account</Button>
+          <button
+            disabled={isSubmitting}
+            className="bg-[#ffc356] py-2  rounded-3xl cursor-pointer w-50 md:w-80"
+          >
+            Create Account
+          </button>
         </motion.div>
       </form>
     </div>
