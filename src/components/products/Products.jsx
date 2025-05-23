@@ -2,6 +2,7 @@ import { useState } from "react";
 import ProductColors from "./productColors/ProductColors";
 import ProductCardFooter from "./productFooter/ProductCardFooter";
 import ProductCard from "./card/ProductCard";
+import { Link } from "react-router";
 
 function Products({ data, index, productType }) {
   const [openColors, setOpenColors] = useState(false);
@@ -9,8 +10,9 @@ function Products({ data, index, productType }) {
     setOpenColors(!openColors);
   }
   return (
-    <div
+    <Link
       className={`bg-[#FAFAFA] flex flex-col gap-2 h-full cursor-pointer relative overflow-hidden`}
+      to={`${data._id}`}
     >
       <div
         className={`${
@@ -33,7 +35,7 @@ function Products({ data, index, productType }) {
         data={data}
         handleShowColors={handleShowColors}
       />
-    </div>
+    </Link>
   );
 }
 
