@@ -8,9 +8,11 @@ import ProductsPage from "./pages/ProductsPage.jsx";
 import store from "./redux/store.jsx";
 import { Provider } from "react-redux";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
+
 import ProductDetails, {
   loader as productDetailsLoader,
 } from "./pages/ProductDetails.jsx";
+import Register from "./components/Register/Register.jsx";
 
 const router = createBrowserRouter([
   {

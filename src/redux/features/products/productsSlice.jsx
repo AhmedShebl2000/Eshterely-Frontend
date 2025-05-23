@@ -29,6 +29,7 @@ export function fetchProductByCategory(category) {
       const res = await fetch(
         `https://eshterely.up.railway.app/api/${category}`
       );
+
       const data = await res.json();
       dispatch(fetchProductsSuccess(data));
     } catch (error) {

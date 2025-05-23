@@ -2,6 +2,7 @@ import { useState } from "react";
 import ProductColors from "./productColors/ProductColors";
 import ProductCardFooter from "./productFooter/ProductCardFooter";
 import ProductCard from "./card/ProductCard";
+
 import { Link } from "react-router";
 
 function Products({ data, index, productType }) {
