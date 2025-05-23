@@ -8,6 +8,7 @@ import ProductsPage from "./pages/ProductsPage.jsx";
 import store from "./redux/store.jsx";
 import { Provider } from "react-redux";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
+import Login from "./pages/Login.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
         path: "/checkout",
         Component: CheckoutPage,
       },
+      { path: "/login", Component: Login },
     ],
   },
 ]);
