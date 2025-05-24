@@ -3,6 +3,7 @@ import VariantsProduct from "../components/ProductDetails/VariantsProduct";
 import ProductHighlight from "../components/ProductDetails/ProductHighlight";
 import Accordion from "../components/ProductDetails/Accordion";
 import SignUp from "../components/ProductDetails/Signup";
+import ReviewSection from "../components/ProductDetails/ReviewSection";
 
 function ProductDetails() {
   return (
@@ -11,6 +12,7 @@ function ProductDetails() {
       <VariantsProduct />
       <ProductHighlight />
       <Accordion />
+      <ReviewSection />
       <SignUp />
     </>
   );
