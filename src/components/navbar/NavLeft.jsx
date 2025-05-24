@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function NavLeft({ isTransparent }) {
+export default function NavLeft({ isTransparent, isMenuOpen, setIsMenuOpen }) {
   return (
     <div>
       <button
