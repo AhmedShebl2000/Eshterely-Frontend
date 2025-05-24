@@ -6,6 +6,7 @@ import Delivery from "../components/checkout/Delivery";
 import ShippingMethod from "../components/checkout/ShippingMethod";
 import PlaceOrder from "../components/checkout/PlaceOrder";
 import InformationForm from "../components/checkout/InformationForm";
+import Paypal from "../components/checkout/Paypal";
 
 const checkoutItemsArr = [
   {
@@ -73,6 +74,8 @@ function CheckoutPage() {
         />
       </div>
       {/* PAYPAL AND CREDIT CARD GO HERE */}
+
+      <Paypal />
 
       {/* SEPARATOR IN MEDIUM-LARGE SCREENS ONLY */}
       <div class="inline-flex items-center justify-center w-full text-[#8C8C8C]">

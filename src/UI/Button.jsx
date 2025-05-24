@@ -19,6 +19,16 @@ function Button({ children, type, onClick, width }) {
       </button>
     );
 
+  if (type === "danger")
+    return (
+      <button
+        onClick={onClick}
+        className={`cursor-pointer border border-red-500 text-white bg-red-500 hover:bg-red-400 font-medium py-2 px-6 rounded-full transition-colors duration-300 w-${width}`}
+      >
+        {children}
+      </button>
+    );
+
   return (
     <button
       onClick={onClick}
