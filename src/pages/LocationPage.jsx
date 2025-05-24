@@ -1,13 +1,7 @@
 import SearchBar from "../components/Locations/SearchBar";
 import StoreList from "../components/Locations/StoreList";
 
-import {
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-  useMap,
-} from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 import { useState } from "react";
@@ -19,7 +13,7 @@ function LocationPage() {
 
   return (
     <div className="flex flex-col md:flex-row h-screen w-full">
-      <div className="w-full md:w-1/3 lg:w-1/4 bg-white flex flex-col border-r max-h-[50vh] md:max-h-full">
+      <div className="w-full md:w-[60%] lg:w-[50%] xl:w-2/5  bg-white flex flex-col border-r max-h-[50vh] md:max-h-full">
         <SearchBar />
         <StoreList setPosition={setPosition} />
       </div>
