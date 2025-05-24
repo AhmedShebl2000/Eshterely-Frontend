@@ -11,8 +11,8 @@ function StoreCard({ name, hours, address, position, setPosition }) {
       className="flex items-start gap-3 bg-white p-4 rounded shadow-sm border mb-4"
     >
       {/* Logo */}
-      <div className="w-8 h-8 flex-shrink-0 rounded-full bg-black flex items-center justify-center text-white text-xs font-semibold">
-        B&O
+      <div className="w-9 h-9 flex-shrink-0 rounded-full bg-yellow-400 flex items-center justify-center text-black text-xs font-semibold">
+        ee
       </div>
 
       {/* Store Info */}
