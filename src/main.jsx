@@ -38,12 +38,12 @@ const router = createBrowserRouter([
         path: "/checkout",
         Component: CheckoutPage,
       },
-      {
-        path: "/locations",
-        Component: LocationPage,
-      },
       { path: "/login", Component: Login },
     ],
+  },
+  {
+    path: "/locations",
+    Component: LocationPage,
   },
 ]);
 
