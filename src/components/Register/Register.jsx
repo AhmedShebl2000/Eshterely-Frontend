@@ -5,8 +5,9 @@ import { AnimatePresence, motion } from "framer-motion";
 
 function Register() {
   const [showRegFrom, setShowRegFrom] = useState(false);
+
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen ">
+    <div className="flex flex-col items-center min-h-screen ">
       {!showRegFrom && (
         <AnimatePresence>
           <motion.div
@@ -16,8 +17,12 @@ function Register() {
             transition={{ duration: 1 }}
             className="flex flex-col gap-3"
           >
-            <h1 className="font-semibold text-3xl">New to Bang & Olufsen?</h1>
-            <p className="flex">With your account you can:</p>
+            <h1 className="font-medium text-2xl mb-3">
+              New to Bang & Olufsen?
+            </h1>
+            <p className="flex font-medium text-md mb-8">
+              With your account you can:
+            </p>
 
             <div className="flex gap-3 items-center">
               <span>
@@ -47,7 +52,7 @@ function Register() {
             </div>
             <button
               onClick={() => setShowRegFrom(true)}
-              className="flex flex-1/2 ring-2 ring-black w-40 justify-center rounded-full p-1 font-semibold cursor-pointer hover:text-white hover:bg-black transition-all duration-300 mt-2"
+              className="flex flex-1/2 ring-2 ring-black w-40 justify-center rounded-full p-1 font-semibold cursor-pointer hover:text-white hover:bg-black transition-all duration-300 mt-8"
             >
               Create Account
             </button>
