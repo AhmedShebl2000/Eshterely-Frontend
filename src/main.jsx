@@ -15,6 +15,7 @@ import ProductDetails, {
 } from "./pages/ProductDetails.jsx";
 import Register from "./components/Register/Register.jsx";
 import LocationPage from "./pages/LocationPage.jsx";
+import CartPage from "./pages/CartPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
         Component: CheckoutPage,
       },
       { path: "/login", Component: Login },
+      {
+        path: "/cart",
+        Component: CartPage,
+      },
     ],
   },
   {

@@ -1,4 +1,4 @@
-function Button({ children, type, onClick }) {
+function Button({ children, type, onClick, width }) {
   if (type === "primary")
     return (
       <button
@@ -13,7 +13,7 @@ function Button({ children, type, onClick }) {
     return (
       <button
         onClick={onClick}
-        className="cursor-pointer border border-black text-black bg-[#FAF9F3] hover:bg-black hover:text-white font-medium py-2 px-6 rounded-full transition-colors duration-300"
+        className={`cursor-pointer border border-black text-black bg-[#FAF9F3] hover:bg-black hover:text-white font-medium py-2 px-6 rounded-full transition-colors duration-300 w-${width}`}
       >
         {children}
       </button>

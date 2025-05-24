@@ -38,10 +38,12 @@ const checkoutItemsArr = [
   },
 ];
 
-const totalPrice = checkoutItemsArr.reduce(
+const totalPriceWithoutVAT = checkoutItemsArr.reduce(
   (accum, current) => accum + current.total * current.quantity,
   0
 );
+
+const totalPrice = totalPriceWithoutVAT + 0.14 * totalPriceWithoutVAT;
 
 function CheckoutPage() {
   const [shippingMethod, setShippingMethod] = useState("0");
