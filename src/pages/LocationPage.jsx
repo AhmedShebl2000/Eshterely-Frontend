@@ -9,7 +9,8 @@ import { useSelector } from "react-redux";
 
 function LocationPage() {
   const [position, setPosition] = useState([30.0444, 31.2357]); // default lat, lng for Cairo
-  const stores = useSelector((state) => state.stores);
+  const stores = useSelector((state) => state.stores.stores);
+  const filterdStores = useSelector((state) => state.stores.filterdStores);
 
   return (
     <div className="flex flex-col md:flex-row h-screen w-full">
@@ -28,16 +29,27 @@ function LocationPage() {
             attribution="&copy; OpenStreetMap contributors"
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {stores.map((store) => (
-            <Marker
-              key={store.id}
-              position={[store.position.lat, store.position.lng]}
-            >
-              <Popup>
-                <span>{store.name}</span>
-              </Popup>
-            </Marker>
-          ))}
+          {filterdStores.length === 0
+            ? stores.map((store) => (
+                <Marker
+                  key={store.id}
+                  position={[store.position.lat, store.position.lng]}
+                >
+                  <Popup>
+                    <span>{store.name}</span>
+                  </Popup>
+                </Marker>
+              ))
+            : filterdStores.map((store) => (
+                <Marker
+                  key={store.id}
+                  position={[store.position.lat, store.position.lng]}
+                >
+                  <Popup>
+                    <span>{store.name}</span>
+                  </Popup>
+                </Marker>
+              ))}
           <ChangeCenter position={position} />
         </MapContainer>
       </div>
