@@ -25,7 +25,6 @@ export default function Navbar() {
 
   return (
     <>
-      {!isProductPage && <div className="h-[104px]" />}
       <nav
         className={`w-full fixed top-0 z-50 transition-all duration-300 ${
           isTransparent ? "bg-transparent" : "bg-white shadow-md"
