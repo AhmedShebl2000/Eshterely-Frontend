@@ -1,19 +1,23 @@
 import Cookies from "js-cookie";
 
 export function setToken(token, rememberMe) {
-  const expirationData = rememberMe
-    ? new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
-    : undefined;
+  const options = {
+    secure: true, // For HTTPS
+    sameSite: "strict", // Protection against CSRF
+    expires: rememberMe
+      ? new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
+      : undefined,
+  };
 
-  Cookies.set("token", token, expirationData);
-  Cookies.set("remember me", rememberMe, expirationData);
+  Cookies.set("token", token, options);
+  Cookies.set("rememberMe", rememberMe.toString(), options);
 }
 
 export function getToken() {
   return Cookies.get("token") || null;
 }
 export function getRememberMe() {
-  return Cookies.get("remember me") === "true";
+  return Cookies.get("rememberMe") === "true";
 }
 
 export function isLoggedIn() {
@@ -22,7 +26,7 @@ export function isLoggedIn() {
 
 export function logout() {
   Cookies.remove("token");
-  Cookies.remove("remember me");
+  Cookies.remove("rememberMe");
 }
 
 export function isValidToken() {
