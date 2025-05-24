@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = [
   {
     id: 0,
-    name: "Eshterely Store at El Sharabeya",
+    name: "Eshtereely Store at El Sharabeya",
     hours: "10:00 AM - 5:30 PM",
     address: "El Sharabeya, Cairo Governorate, Egypt",
     position: {
@@ -13,7 +13,7 @@ const initialState = [
   },
   {
     id: 1,
-    name: "Eshterely Store at Helwan",
+    name: "Eshtereely Store at Helwan",
     hours: "10:00 AM - 5:30 PM",
     address: "Helwan, Cairo Governorate, Egypt",
     position: {
@@ -23,7 +23,7 @@ const initialState = [
   },
   {
     id: 2,
-    name: "Eshterely Store at Nasr City",
+    name: "Eshtereely Store at Nasr City",
     hours: "10:00 AM - 5:30 PM",
     address: "Nasr City, Cairo Governorate, Egypt",
     position: {
@@ -33,7 +33,7 @@ const initialState = [
   },
   {
     id: 3,
-    name: "Eshterely Store at Hadayeq Al Ahram",
+    name: "Eshtereely Store at Hadayeq Al Ahram",
     hours: "10:00 AM - 5:30 PM",
     address: "Hadayeq Al Ahram, Giza Governorate, Egypt",
     position: {
@@ -43,7 +43,7 @@ const initialState = [
   },
   {
     id: 4,
-    name: "Eshterely Store at Al-Warraq",
+    name: "Eshtereely Store at Al-Warraq",
     hours: "10:00 AM - 5:30 PM",
     address: "Al-Warraq, Giza Governorate, Egypt",
     position: {
