@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 
 function LocationPage() {
-  const [position, setPosition] = useState([30.0444, 31.2357]); // default lat, lng for Cairo
+  const [position, setPosition] = useState([30.1005, 31.2613]); // default lat, lng for Cairo
   const stores = useSelector((state) => state.stores.stores);
   const filterdStores = useSelector((state) => state.stores.filterdStores);
 
