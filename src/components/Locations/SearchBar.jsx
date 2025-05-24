@@ -3,8 +3,11 @@ import {
   MapPinIcon,
   AdjustmentsHorizontalIcon,
 } from "@heroicons/react/24/outline";
+import { useState } from "react";
+import FiltersModal from "./FilterModal";
 
 function SearchBar() {
+  const [showFilters, setShowFilters] = useState(false);
   return (
     <div className="p-4 border-b">
       <h2 className="text-xl font-semibold mb-1">Find a store – Eshtereely</h2>
@@ -25,11 +28,16 @@ function SearchBar() {
           <button className="p-2 hover:bg-gray-100 rounded cursor-pointer">
             <MapPinIcon className="w-5 h-5 text-gray-600" />
           </button>
-          <button className="p-2 hover:bg-gray-100 rounded cursor-pointer">
+          <button
+            className="p-2 hover:bg-gray-100 rounded cursor-pointer"
+            onClick={() => setShowFilters(true)}
+          >
             <AdjustmentsHorizontalIcon className="w-5 h-5 text-gray-600" />
           </button>
         </div>
       </div>
+
+      {showFilters && <FiltersModal onClose={() => setShowFilters(false)} />}
     </div>
   );
 }
