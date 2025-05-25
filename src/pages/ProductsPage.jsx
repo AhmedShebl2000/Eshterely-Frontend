@@ -6,7 +6,7 @@ import Loader from "../components/Loader";
 import ErrorFetchingData from "../components/ErrorFetchingData";
 import Products from "../components/products/Products";
 import ProductCategory from "../components/products/subCategory/ProductCategory";
-import SignUp from "../components/ProductDetails/Signup";
+import SignUp from "../components/ProductDetails/SignUp";
 
 export default function ProductsPage() {
   const { category } = useParams();
