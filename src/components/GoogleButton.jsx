@@ -10,11 +10,14 @@ function GoogleButton() {
     <GoogleLogin
       onSuccess={async (credentialResponse) => {
         try {
-          const res = await fetch("http://localhost:5000/api/auth/google", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ token: credentialResponse.credential }),
-          });
+          const res = await fetch(
+            "https://eshterely.up.railway.app/api/auth/google",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ token: credentialResponse.credential }),
+            }
+          );
           if (!res.ok) throw new Error("Network response was not ok");
 
           const data = await res.json();
