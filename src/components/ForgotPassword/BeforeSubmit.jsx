@@ -25,7 +25,7 @@ function BeforeSubmit() {
   return (
     <div className="flex justify-center items-center min-h-screen gap-20 mt-5">
       <div className="flex flex-col">
-        <h1 className="text-2xl font-semibold mb-10 text-center lg:text-start">
+        <h1 className="text-3xl font-semibold mb-10 text-center">
           Forgot your password
         </h1>
         <form onSubmit={handleSubmit(onSubmit)} className="max-w-100 p-5">

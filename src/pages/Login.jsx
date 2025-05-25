@@ -6,6 +6,7 @@ import { setToken, isLoggedIn, getRememberMe } from "../utils/authHelpers";
 import axios from "axios";
 import ButtonsLoader from "../components/ButtonsLoader";
 import { useCart } from "../Contexts/CartContext";
+import GoogleButton from "../components/GoogleButton";
 
 function Login() {
   const [rememberMe, setRememberMe] = useState(getRememberMe());
@@ -169,7 +170,6 @@ function Login() {
             {isLoading ? <ButtonsLoader /> : <span>Log in</span>}
           </button>
         </form>
-
         <div class="flex items-center my-6">
           <div class="flex-grow border-t border-gray-300"></div>
           <span class="px-4 text-gray-800 dark:text-gray-300 text-sm font-medium">
@@ -177,9 +177,9 @@ function Login() {
           </span>
           <div class="flex-grow border-t border-gray-300"></div>
         </div>
-        <button className="cursor-pointer bg-blue-500 text-white px-5 py-2 flex justify-center mx-auto rounded-lg">
-          Continue with google
-        </button>
+        <div className="flex justify-center items-center">
+          <GoogleButton />
+        </div>
       </div>
       <div className="border-r border-gray-400 mx-10 min-h-[500px] hidden lg:block"></div>
       <div>
