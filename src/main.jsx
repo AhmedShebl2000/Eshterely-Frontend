@@ -24,6 +24,8 @@ import AboutPage from "./pages/AboutPage.jsx";
 
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
+import { GoogleOAuthProvider } from "@react-oauth/google";
+
 const router = createBrowserRouter([
   {
     path: "/",
