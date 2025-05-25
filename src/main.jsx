@@ -20,6 +20,7 @@ import { CartProvider } from "./Contexts/CartContext.jsx";
 import ForgorPassword from "./pages/ForgorPassword.jsx";
 import { ForgotPasswordProvider } from "./Contexts/ForgotPasswordContext.jsx";
 import ResetPassword from "./pages/ResetPassword.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: "/reset-password/:token",
         Component: ResetPassword,
+      },
+      {
+        path: "/AboutPage",
+        Component: AboutPage,
       },
     ],
   },
