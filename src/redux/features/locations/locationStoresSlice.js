@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 const initialState = {
   stores: [
     {
@@ -18,8 +17,8 @@ const initialState = {
       hours: "10:00 AM - 5:30 PM",
       address: "Helwan, Cairo Governorate, Egypt",
       position: {
-        lat: 29.8414,
-        lng: 31.3008,
+        lat: 29.851655,
+        lng: 31.326888,
       },
     },
     {
@@ -28,8 +27,8 @@ const initialState = {
       hours: "10:00 AM - 5:30 PM",
       address: "Nasr City, Cairo Governorate, Egypt",
       position: {
-        lat: 30.0561,
-        lng: 31.33,
+        lat: 30.048085,
+        lng: 31.356331,
       },
     },
     {
@@ -38,8 +37,8 @@ const initialState = {
       hours: "10:00 AM - 5:30 PM",
       address: "Hadayeq Al Ahram, Giza Governorate, Egypt",
       position: {
-        lat: 29.9893,
-        lng: 31.1272,
+        lat: 29.981840,
+        lng: 31.107387,
       },
     },
     {
@@ -48,8 +47,8 @@ const initialState = {
       hours: "10:00 AM - 5:30 PM",
       address: "Al-Warraq, Giza Governorate, Egypt",
       position: {
-        lat: 30.0911,
-        lng: 31.2233,
+        lat: 30.110299,
+        lng: 31.216233,
       },
     },
     {
