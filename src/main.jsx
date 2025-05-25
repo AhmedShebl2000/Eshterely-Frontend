@@ -21,6 +21,8 @@ import ForgorPassword from "./pages/ForgorPassword.jsx";
 import { ForgotPasswordProvider } from "./Contexts/ForgotPasswordContext.jsx";
 import ResetPassword from "./pages/ResetPassword.jsx";
 
+import { GoogleOAuthProvider } from "@react-oauth/google";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -66,14 +68,16 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Provider store={store}>
-      <CartProvider>
-        <ForgotPasswordProvider>
-          <RouterProvider router={router}>
-            <App />
-          </RouterProvider>
-        </ForgotPasswordProvider>
-      </CartProvider>
-    </Provider>
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_CLIENT_ID} locale="en">
+      <Provider store={store}>
+        <CartProvider>
+          <ForgotPasswordProvider>
+            <RouterProvider router={router}>
+              <App />
+            </RouterProvider>
+          </ForgotPasswordProvider>
+        </CartProvider>
+      </Provider>
+    </GoogleOAuthProvider>
   </StrictMode>
 );

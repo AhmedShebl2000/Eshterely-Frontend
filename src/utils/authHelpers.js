@@ -1,4 +1,5 @@
 import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 
 export function setToken(token, rememberMe) {
   const options = {
@@ -29,9 +30,14 @@ export function logout() {
   Cookies.remove("rememberMe");
 }
 
-export function isValidToken() {
-  const token = getToken();
-  return token !== null && token.length > 10;
+export function isValidToken(token) {
+  try {
+    const decoded = jwtDecode(token);
+    if (!decoded) return false;
+    return Date.now() < decoded * 1000;
+  } catch (e) {
+    return false;
+  }
 }
 
 export function getLoginState() {

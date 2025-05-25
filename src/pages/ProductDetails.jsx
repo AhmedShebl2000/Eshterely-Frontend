@@ -2,7 +2,7 @@ import HeroSection from "../components/ProductDetails/HeroSection";
 import VariantsProduct from "../components/ProductDetails/VariantsProduct";
 import ProductHighlight from "../components/ProductDetails/ProductHighlight";
 import Accordion from "../components/ProductDetails/Accordion";
-import SignUp from "../components/ProductDetails/Signup";
+import SignUp from "../components/ProductDetails/SignUp";
 import ReviewSection from "../components/ProductDetails/ReviewSection";
 
 function ProductDetails() {
