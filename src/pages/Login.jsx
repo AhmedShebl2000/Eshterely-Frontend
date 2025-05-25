@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import Register from "../components/Register/Register";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { setToken, isLoggedIn, getRememberMe } from "../utils/authHelpers";
 import axios from "axios";
 import ButtonsLoader from "../components/ButtonsLoader";
+import { useCart } from "../Contexts/CartContext";
 
 function Login() {
   const [rememberMe, setRememberMe] = useState(getRememberMe());
   const [loginError, setLoginError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { fetchCart } = useCart();
 
   const {
     register,
@@ -40,6 +42,7 @@ function Login() {
       console.log(rememberMe);
       if (res.data.token) {
         setToken(res.data.token, rememberMe);
+        await fetchCart();
         navigate("/");
       } else {
         throw new Error("No token received");
@@ -106,7 +109,7 @@ function Login() {
                 required: "Password is required",
                 minLength: {
                   value: 5,
-                  message: "Email must be at least 5 characters",
+                  message: "Password must be at least 5 characters",
                 },
               })}
               className={`w-full py-1 border-b focus:outline-none focus:border-black border-gray-300 peer ${
@@ -140,9 +143,12 @@ function Login() {
                 Remember Me
               </label>
             </div>
-            <div className="underline underline-offset-2 cursor-pointer">
+            <Link
+              to={"/forgot-password"}
+              className="underline underline-offset-2 cursor-pointer"
+            >
               Forgot password?
-            </div>
+            </Link>
           </div>
 
           <p className="text-xs text-gray-600 ">

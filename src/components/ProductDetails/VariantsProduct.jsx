@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router";
 import { AnimatePresence, motion } from "framer-motion";
+import { useCart } from "../../Contexts/CartContext";
 
 function VariantsProduct() {
   const [current, setCurrent] = useState(0);
@@ -8,6 +9,9 @@ function VariantsProduct() {
 
   const images = colors.map((color) => color.images[0]);
   console.log(images);
+
+  const { addToCart } = useCart();
+  const productData = useLoaderData();
 
   function prevImage() {
     setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
@@ -132,6 +136,16 @@ function VariantsProduct() {
           <div className="flex gap-8 text-xs text-gray-700">
             <span>✔️ Home Installation</span>
             <span>✔️ 24/7 Customer Service</span>
+          </div>
+          <div>
+            <button
+              className="w-40 px-8 py-2 bg-[#FFB800] text-black font-semibold rounded-full hover:bg-[#FFD700] transition-colors cursor-pointer mt-10"
+              onClick={() => {
+                addToCart(productData);
+              }}
+            >
+              Add to cart
+            </button>
           </div>
         </div>
       </div>

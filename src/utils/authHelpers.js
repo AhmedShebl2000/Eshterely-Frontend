@@ -2,8 +2,8 @@ import Cookies from "js-cookie";
 
 export function setToken(token, rememberMe) {
   const options = {
-    secure: true, // For HTTPS
-    sameSite: "strict", // Protection against CSRF
+    secure: true,
+    sameSite: "strict",
     expires: rememberMe
       ? new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
       : undefined,

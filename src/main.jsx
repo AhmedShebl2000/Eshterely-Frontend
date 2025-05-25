@@ -16,6 +16,10 @@ import ProductDetails, {
 import Register from "./components/Register/Register.jsx";
 import LocationPage from "./pages/LocationPage.jsx";
 import CartPage from "./pages/CartPage.jsx";
+import { CartProvider } from "./Contexts/CartContext.jsx";
+import ForgorPassword from "./pages/ForgorPassword.jsx";
+import { ForgotPasswordProvider } from "./Contexts/ForgotPasswordContext.jsx";
+import ResetPassword from "./pages/ResetPassword.jsx";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +48,14 @@ const router = createBrowserRouter([
         path: "/cart",
         Component: CartPage,
       },
+      {
+        path: "/forgot-password",
+        Component: ForgorPassword,
+      },
+      {
+        path: "/reset-password/:token",
+        Component: ResetPassword,
+      },
     ],
   },
   {
@@ -55,9 +67,13 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router}>
-        <App />
-      </RouterProvider>
+      <CartProvider>
+        <ForgotPasswordProvider>
+          <RouterProvider router={router}>
+            <App />
+          </RouterProvider>
+        </ForgotPasswordProvider>
+      </CartProvider>
     </Provider>
   </StrictMode>
 );
