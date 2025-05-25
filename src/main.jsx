@@ -20,6 +20,9 @@ import { CartProvider } from "./Contexts/CartContext.jsx";
 import ForgorPassword from "./pages/ForgorPassword.jsx";
 import { ForgotPasswordProvider } from "./Contexts/ForgotPasswordContext.jsx";
 import ResetPassword from "./pages/ResetPassword.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
+
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
@@ -57,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "/reset-password/:token",
         Component: ResetPassword,
+      },
+      {
+        path: "/About",
+        Component: AboutPage,
       },
     ],
   },
