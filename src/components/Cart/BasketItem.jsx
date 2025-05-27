@@ -1,8 +1,17 @@
 import { IoIosClose } from "react-icons/io";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { useCart } from "../../Contexts/CartContext";
 
 function BasketItem({ item }) {
-  function handleRemoveFromCart(item) {}
+  const { removeFromCart } = useCart();
+  function handleRemoveFromCart(item) {
+    removeFromCart(item._id);
+  }
+
+  useEffect(() => {
+    console.log(item);
+  }, []);
 
   return (
     <motion.div
@@ -19,14 +28,14 @@ function BasketItem({ item }) {
           <IoIosClose />
         </div>
         <div className=" flex w-3/12 items-center justify-center">
-          <img className="w-20" src={item.imgURL} />
+          <img className="w-20" src={item.image} />
         </div>
         <div className="flex w-9/12 flex-col justify-center gap-2">
-          <p className="w-11/12">{item.title}</p>
+          <p className="w-11/12">{item.name}</p>
           <div className="flex justify-between mt-5">
             <p className="text-wrap w-3/4">{item.quantity}</p>
             <p className="font-semibold">
-              € {(item.quantity * item.total).toFixed(2)}
+              € {(item.quantity * item.price).toLocaleString()}
             </p>
           </div>
         </div>

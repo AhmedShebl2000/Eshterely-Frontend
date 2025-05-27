@@ -40,7 +40,7 @@ function CartData() {
         </div>
         <div>
           <Link
-            to={"/checkout"}
+            to={"/cart"}
             onClick={() => setShowCart(false)}
             className="flex flex-grow bg-[#FFB800] text-black font-semibold rounded-full hover:bg-[#FFD700] px-5 py-2 justify-center items-center mt-2"
           >

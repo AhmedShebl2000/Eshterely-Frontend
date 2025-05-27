@@ -17,11 +17,13 @@ function EmptyCart() {
       </p>
       <div className="flex flex-wrap justify-center mt-5 gap-y-10 gap-x-2">
         <div className="flex flex-col justify-center items-center">
-          <img
-            src="/Images/speaker-black.webp"
-            alt="speakers"
-            className="w-35 h-35 object-cover"
-          />
+          <Link to={"/products/speakers"}>
+            <img
+              src="/Images/speaker-black.webp"
+              alt="speakers"
+              className="w-35 h-35 object-cover"
+            />
+          </Link>
           <Link
             to={"/products/speakers"}
             className="font-medium bg-amber-400 px-5 py-1 rounded-md hover:bg-amber-300"
@@ -31,11 +33,13 @@ function EmptyCart() {
           </Link>
         </div>
         <div className="flex flex-col justify-center items-center">
-          <img
-            src="/Images/headphone-black.webp"
-            alt="headphone"
-            className="w-35 h-35 object-cover"
-          />
+          <Link to={"/products/headphones"}>
+            <img
+              src="/Images/headphone-black.webp"
+              alt="headphone"
+              className="w-35 h-35 object-cover"
+            />
+          </Link>
           <Link
             to={"/products/headphones"}
             className="font-medium bg-amber-400 px-5 py-1 rounded-md hover:bg-amber-300"
@@ -45,11 +49,13 @@ function EmptyCart() {
           </Link>
         </div>
         <div className="flex flex-col justify-center items-center">
-          <img
-            src="/Images/television-black.webp"
-            alt="television"
-            className="w-35 h-35 object-cover"
-          />
+          <Link to={"/products/televisions"}>
+            <img
+              src="/Images/television-black.webp"
+              alt="television"
+              className="w-35 h-35 object-cover"
+            />
+          </Link>
           <Link
             to={"/products/televisions"}
             className="font-medium bg-amber-400 px-5 py-1 rounded-md hover:bg-amber-300"
@@ -59,11 +65,13 @@ function EmptyCart() {
           </Link>
         </div>
         <div className="flex flex-col justify-center items-center">
-          <img
-            src="/Images/soundbar-black.webp"
-            alt="soundbar"
-            className="w-35 h-35 object-cover"
-          />
+          <Link to={"/products/soundbars"}>
+            <img
+              src="/Images/soundbar-black.webp"
+              alt="soundbar"
+              className="w-35 h-35 object-cover"
+            />
+          </Link>
           <Link
             to={"/products/soundbars"}
             className="font-medium bg-amber-400 px-5 py-1 rounded-md hover:bg-amber-300"

@@ -1,7 +1,7 @@
 import BasketItem from "./BasketItem";
 import { motion } from "framer-motion";
 
-function Items({ checkoutItemsArr }) {
+function Items({ productArr }) {
   return (
     <div className="flex flex-col gap-5 p-20 items-center md:items-stretch lg:p-4 lg:max-w-[600px]">
       <div className="flex gap-6 items-center">
@@ -45,7 +45,7 @@ function Items({ checkoutItemsArr }) {
         </motion.div>
       </div>
       <div className="flex flex-col gap-10">
-        {checkoutItemsArr.map((item) => (
+        {productArr.map((item) => (
           <BasketItem item={item} />
         ))}
       </div>
