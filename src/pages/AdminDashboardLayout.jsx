@@ -5,7 +5,7 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 export default function AdminDashboardLayout() {
   return (
-    <SidebarProvider>
+    <SidebarProvider className="dark">
       <AppSidebar variant="inset" />
       <SidebarInset>
         <SiteHeader />
