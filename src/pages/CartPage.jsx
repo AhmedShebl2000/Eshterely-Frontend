@@ -40,7 +40,7 @@ function CartPage() {
     );
 
   return (
-    <div className="flex flex-col items-center lg:flex-row lg:items-stretch justify-center min-h-screen mt-40">
+    <div className="flex flex-col items-center lg:flex-row lg:items-stretch justify-center min-h-screen mt-10">
       <Items productArr={productArr} />
       <OrderSummary vat={vat} totalPrice={totalPrice} />
     </div>

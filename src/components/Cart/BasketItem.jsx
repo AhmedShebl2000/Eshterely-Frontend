@@ -20,7 +20,7 @@ function BasketItem({ item }) {
       whileHover={{ y: -10 }}
       className="bg-[#FAFAFA] w-100 md:w-140 p-4 rounded-sm"
     >
-      <div className="flex relative items-center  gap-6 border-b-2 pb-4 border-[#d9d9d9]">
+      <div className="flex relative items-center gap-6 border-b-2 pb-4 border-[#d9d9d9]">
         <div
           className="absolute -top-1 right-0 cursor-pointer"
           onClick={() => handleRemoveFromCart(item)}
