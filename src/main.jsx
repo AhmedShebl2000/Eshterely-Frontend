@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
+import { lazy, Suspense } from "react";
 
 import App from "./App.jsx";
 import "./index.css";
@@ -18,6 +19,17 @@ import CartPage from "./pages/CartPage.jsx";
 import ForgorPassword from "./pages/ForgorPassword.jsx";
 import ResetPassword from "./pages/ResetPassword.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
+
+// admin-dashboard pages
+const AdminDashboardLayout = lazy(() =>
+  import("./pages/AdminDashboardLayout.jsx")
+);
+const Dashboard = lazy(() => import("./components/dashboard/Dashboard.jsx"));
+const Orders = lazy(() => import("./components/dashboard/Orders.jsx"));
+const Products = lazy(() => import("./components/dashboard/Products.jsx"));
+const Users = lazy(() => import("./components/dashboard/Users.jsx"));
+const Analytics = lazy(() => import("./components/dashboard/Analytics.jsx"));
+import Loader from "./components/ui/Loader.jsx";
 
 // Redux TK
 import store from "./redux/store.jsx";
@@ -70,6 +82,56 @@ const router = createBrowserRouter([
   {
     path: "/locations",
     Component: LocationPage,
+  },
+  {
+    path: "/adminDashboard",
+    element: (
+      <Suspense fallback={<Loader />}>
+        <AdminDashboardLayout />
+      </Suspense>
+    ),
+    children: [
+      {
+        index: true,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Dashboard />
+          </Suspense>
+        ),
+      },
+      {
+        path: "orders",
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Orders />
+          </Suspense>
+        ),
+      },
+      {
+        path: "products",
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Products />
+          </Suspense>
+        ),
+      },
+      {
+        path: "users",
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Users />
+          </Suspense>
+        ),
+      },
+      {
+        path: "analytics",
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Analytics />
+          </Suspense>
+        ),
+      },
+    ],
   },
 ]);
 
