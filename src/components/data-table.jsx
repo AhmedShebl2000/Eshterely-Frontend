@@ -97,7 +97,7 @@ export const schema = z.object({
   type: z.string(),
   status: z.string(),
   target: z.string(),
-  limit: z.string(),
+  quantity: z.string(),
   reviewer: z.string(),
 });
 
@@ -162,7 +162,7 @@ const columns = [
     enableHiding: false,
   },
   {
-    accessorKey: "type",
+    accessorKey: "Product type",
     header: "Product Type",
     cell: ({ row }) => (
       <div className="w-32">
@@ -187,26 +187,51 @@ const columns = [
     ),
   },
   {
-    accessorKey: "target",
-    header: () => <div className="w-full text-right">Quantity</div>,
+    accessorKey: "Price",
+    header: () => <div className="w-full">Price</div>,
     cell: ({ row }) => (
       <form
         onSubmit={(e) => {
           e.preventDefault();
           toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
-            loading: `Saving ${row.original.header}`,
+            loading: `Saving ${row.original.price}`,
             success: "In store",
             error: "Error",
           });
         }}
       >
-        <Label htmlFor={`${row.original.id}-target`} className="sr-only">
-          Quantity
+        <Label htmlFor={`${row.original.id}-price`} className="sr-only">
+          Price
         </Label>
         <Input
           className="hover:bg-input/30 focus-visible:bg-background dark:hover:bg-input/30 dark:focus-visible:bg-input/30 h-8 w-16 border-transparent bg-transparent text-right shadow-none focus-visible:border dark:bg-transparent"
-          defaultValue={row.original.target}
-          id={`${row.original.id}-target`}
+          defaultValue={row.original.price}
+          id={`${row.original.id}-price`}
+        />
+      </form>
+    ),
+  },
+  {
+    accessorKey: "quantity",
+    header: () => <div className="w-full">Quantity</div>,
+    cell: ({ row }) => (
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
+            loading: `Saving ${row.original.quantity}`,
+            success: "In store",
+            error: "Error",
+          });
+        }}
+      >
+        <Label htmlFor={`${row.original.id}-quantity`} className="sr-only">
+          quantity
+        </Label>
+        <Input
+          className="hover:bg-input/30 focus-visible:bg-background dark:hover:bg-input/30 dark:focus-visible:bg-input/30 h-8 w-16 border-transparent bg-transparent text-right shadow-none focus-visible:border dark:bg-transparent"
+          defaultValue={row.original.quantity}
+          id={`${row.original.id}-quantity`}
         />
       </form>
     ),
@@ -261,8 +286,6 @@ const columns = [
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-32">
           <DropdownMenuItem>Edit</DropdownMenuItem>
-          <DropdownMenuItem>Make a copy</DropdownMenuItem>
-          <DropdownMenuItem>Favorite</DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
         </DropdownMenuContent>
@@ -672,22 +695,10 @@ function TableCellViewer({ item }) {
                     <SelectValue placeholder="Select a type" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="Table of Contents">
-                      Table of Contents
-                    </SelectItem>
-                    <SelectItem value="Executive Summary">
-                      Executive Summary
-                    </SelectItem>
-                    <SelectItem value="Technical Approach">
-                      Technical Approach
-                    </SelectItem>
-                    <SelectItem value="Design">Design</SelectItem>
-                    <SelectItem value="Capabilities">Capabilities</SelectItem>
-                    <SelectItem value="Focus Documents">
-                      Focus Documents
-                    </SelectItem>
-                    <SelectItem value="Narrative">Narrative</SelectItem>
-                    <SelectItem value="Cover Page">Cover Page</SelectItem>
+                    <SelectItem value="Televisions">Televisions</SelectItem>
+                    <SelectItem value="Speakers">Speakers</SelectItem>
+                    <SelectItem value="Headphones">Headphones</SelectItem>
+                    <SelectItem value="Soundbars">Soundbars</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -707,12 +718,12 @@ function TableCellViewer({ item }) {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col gap-3">
-                <Label htmlFor="target">Quantity</Label>
-                <Input id="target" defaultValue={item.target} />
+                <Label htmlFor="target">Price</Label>
+                <Input id="target" defaultValue={item.price} />
               </div>
               <div className="flex flex-col gap-3">
-                <Label htmlFor="limit">Limit</Label>
-                <Input id="limit" defaultValue={item.limit} />
+                <Label htmlFor="quantity">Quantity</Label>
+                <Input id="quantity" defaultValue={item.quantity} />
               </div>
             </div>
             <div className="flex flex-col gap-3">
