@@ -37,6 +37,9 @@ import { Provider } from "react-redux";
 import { CartProvider } from "./Contexts/CartContext.jsx";
 import { ForgotPasswordProvider } from "./Contexts/ForgotPasswordContext.jsx";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { loader as productsLoader } from "./components/dashboard/Products.jsx";
+import { loader as usersLoader } from "./components/dashboard/Users.jsx";
+import { Toaster } from "sonner";
 
 const router = createBrowserRouter([
   {
@@ -114,6 +117,7 @@ const router = createBrowserRouter([
             <Products />
           </Suspense>
         ),
+        loader: productsLoader,
       },
       {
         path: "users",
@@ -122,6 +126,7 @@ const router = createBrowserRouter([
             <Users />
           </Suspense>
         ),
+        loader: usersLoader,
       },
       {
         path: "analytics",
@@ -141,6 +146,7 @@ createRoot(document.getElementById("root")).render(
       <Provider store={store}>
         <CartProvider>
           <ForgotPasswordProvider>
+            <Toaster richColors position="top-center" />
             <RouterProvider router={router}>
               <App />
             </RouterProvider>
