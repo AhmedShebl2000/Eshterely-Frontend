@@ -139,6 +139,8 @@ function CartProvider({ children }) {
         removeFromCart,
         updateQuantity,
         fetchCart,
+        isLoading,
+        error,
       }}
     >
       {children}

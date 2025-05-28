@@ -5,7 +5,7 @@ import { useCart } from "../../Contexts/CartContext";
 function CartData() {
   const { productArr, setShowCart } = useCart();
   return (
-    <div className="flex flex-col" style={{ height: "550px" }}>
+    <div className="flex flex-col" style={{ maxHeight: "500px" }}>
       <div className="flex-shrink-0">
         {" "}
         <div
