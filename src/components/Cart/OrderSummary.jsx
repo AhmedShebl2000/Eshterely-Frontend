@@ -39,7 +39,7 @@ function OrderSummary({ vat, totalPrice }) {
     <div className="flex flex-col p-8 rounded-md gap-3 mt-19 min-w-[300px] md:w-[600px]">
       <div className="flex justify-between">
         <p className="tracking-widest">TAX</p>
-        <p className="font-semibold">€ {vat}</p>
+        <p className="font-semibold">€ {Number(vat).toLocaleString()}</p>
       </div>
       <div className="flex justify-between">
         <p className="font-semibold tracking-widest">
@@ -47,13 +47,17 @@ function OrderSummary({ vat, totalPrice }) {
         </p>
 
         {discount === 0 ? (
-          <p className="font-semibold">€ {totalPrice}</p>
+          <p className="font-semibold">
+            € {Number(totalPrice).toLocaleString()}
+          </p>
         ) : (
           <p className="font-semibold">
             <span className="line-through mr-2 font-extralight">
-              € {totalPrice}
+              € {Number(totalPrice).toLocaleString()}
             </span>{" "}
-            € {totalPrice - (discount / 100) * totalPrice}
+            €{" "}
+            {Number(totalPrice).toLocaleString() -
+              (discount / 100) * Number(totalPrice).toLocaleString()}
             <span className="ml-2 text-green-700">({discount}% off)</span>
           </p>
         )}

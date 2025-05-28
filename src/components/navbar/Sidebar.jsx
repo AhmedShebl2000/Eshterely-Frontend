@@ -105,27 +105,9 @@ export default function Sidebar({ isOpen, onClose }) {
               </svg>
               Find Store
             </Link>
-            <Link
-              to="/login"
-              className="flex items-center py-2 hover:bg-gray-100 transition-colors"
-              onClick={onClose}
-            >
-              <svg
-                className="w-5 h-5 mr-2"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                />
-              </svg>
-              Account
-            </Link>
-            {getToken() && (
+            {getToken() ? (
+              <Logout>Logout</Logout>
+            ) : (
               <Link
                 to="/login"
                 className="flex items-center py-2 hover:bg-gray-100 transition-colors"
@@ -141,10 +123,10 @@ export default function Sidebar({ isOpen, onClose }) {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                   />
                 </svg>
-                <Logout />
+                Account
               </Link>
             )}
           </div>

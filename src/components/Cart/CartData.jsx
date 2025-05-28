@@ -5,7 +5,7 @@ import { useCart } from "../../Contexts/CartContext";
 function CartData() {
   const { productArr, setShowCart } = useCart();
   return (
-    <div className="flex flex-col" style={{ height: "550px" }}>
+    <div className="flex flex-col" style={{ maxHeight: "500px" }}>
       <div className="flex-shrink-0">
         {" "}
         <div
@@ -40,7 +40,7 @@ function CartData() {
         </div>
         <div>
           <Link
-            to={"/checkout"}
+            to={"/cart"}
             onClick={() => setShowCart(false)}
             className="flex flex-grow bg-[#FFB800] text-black font-semibold rounded-full hover:bg-[#FFD700] px-5 py-2 justify-center items-center mt-2"
           >

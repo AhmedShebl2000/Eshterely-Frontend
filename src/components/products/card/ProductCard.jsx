@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 function ProductCard({ data, productType }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -31,15 +32,22 @@ function ProductCard({ data, productType }) {
         </div>
       </div>
       <div
-        className="flex-grow"
+        className="flex-grow relative"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <img
-          src={getImageSource()}
-          alt={data.name}
-          className="w-full h-full object-cover"
-        />
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={getImageSource()}
+            src={getImageSource()}
+            alt={data.name}
+            className="w-full h-full object-cover absolute"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          />
+        </AnimatePresence>
       </div>
     </div>
   );
