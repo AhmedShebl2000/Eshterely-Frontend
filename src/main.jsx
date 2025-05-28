@@ -25,6 +25,8 @@ import { Provider } from "react-redux";
 import { CartProvider } from "./Contexts/CartContext.jsx";
 import { ForgotPasswordProvider } from "./Contexts/ForgotPasswordContext.jsx";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import FAQPage from "./pages/FAQPage.jsx";
+import FAQDetails from "./pages/FAQDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +66,14 @@ const router = createBrowserRouter([
       {
         path: "/about",
         Component: AboutPage,
+      },
+      {
+        path: "/faq",
+        Component: FAQPage,
+      },
+      {
+        path: "/faqDetails/:id",
+        Component: FAQDetails,
       },
     ],
   },
