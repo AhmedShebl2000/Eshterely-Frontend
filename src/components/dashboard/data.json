@@ -4,8 +4,8 @@
     "header": "Beovision Harmony",
     "type": "Televisions",
     "status": "Coming soon",
-    "target": "11900",
-    "limit": "5",
+    "price": "$11900",
+    "quantity": "5",
     "reviewer": "Assign reviewer"
   },
   {
@@ -13,8 +13,8 @@
     "header": "Beovision Contour",
     "type": "Televisions",
     "status": "In store",
-    "target": "11900",
-    "limit": "5",
+    "price": "$11900",
+    "quantity": "5",
     "reviewer": "Assign reviewer"
   },
   {
@@ -22,8 +22,8 @@
     "header": "Beovision Theatre Ferrari Edition",
     "type": "Televisions",
     "status": "In store",
-    "target": "11900",
-    "limit": "5",
+    "price": "$11900",
+    "quantity": "5",
     "reviewer": "Assign reviewer"
   },
   {
@@ -31,8 +31,8 @@
     "header": "Beovision Theatre",
     "type": "Televisions",
     "status": "In store",
-    "target": "11900",
-    "limit": "5",
+    "price": "$11900",
+    "quantity": "5",
     "reviewer": "Assign reviewer"
   },
   {
@@ -40,8 +40,8 @@
     "header": "Beosound 2",
     "type": "Speakers",
     "status": "In store",
-    "target": "3700",
-    "limit": "3",
+    "price": "$3700",
+    "quantity": "3",
     "reviewer": "Assign reviewer"
   },
   {
@@ -49,8 +49,8 @@
     "header": "Beosound Balance",
     "type": "Speakers",
     "status": "Out of stock",
-    "target": "3700",
-    "limit": "3",
+    "price": "$3700",
+    "quantity": "3",
     "reviewer": "Assign reviewer"
   },
   {
@@ -58,8 +58,8 @@
     "header": "Beosound A9",
     "type": "Speakers",
     "status": "In store",
-    "target": "3700",
-    "limit": "3",
+    "price": "$3700",
+    "quantity": "3",
     "reviewer": "Assign reviewer"
   }
 ]

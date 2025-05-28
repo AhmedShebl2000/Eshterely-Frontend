@@ -97,7 +97,7 @@ export const schema = z.object({
   type: z.string(),
   status: z.string(),
   target: z.string(),
-  quantity: z.string(),
+  limit: z.string(),
   reviewer: z.string(),
 });
 
@@ -154,20 +154,20 @@ const columns = [
     enableHiding: false,
   },
   {
-    accessorKey: "header",
-    header: "Product",
+    accessorKey: "id",
+    header: "Order ID",
     cell: ({ row }) => {
       return <TableCellViewer item={row.original} />;
     },
     enableHiding: false,
   },
   {
-    accessorKey: "Product type",
-    header: "Product Type",
+    accessorKey: "product",
+    header: "Product",
     cell: ({ row }) => (
       <div className="w-32">
         <Badge variant="outline" className="text-muted-foreground px-1.5">
-          {row.original.type}
+          {row.original.product}
         </Badge>
       </div>
     ),
@@ -177,38 +177,13 @@ const columns = [
     header: "Status",
     cell: ({ row }) => (
       <Badge variant="outline" className="text-muted-foreground px-1.5">
-        {row.original.status === "In store" ? (
+        {row.original.status === "Approved" ? (
           <IconCircleCheckFilled className="fill-green-500 dark:fill-green-400" />
         ) : (
           <IconLoader />
         )}
         {row.original.status}
       </Badge>
-    ),
-  },
-  {
-    accessorKey: "Price",
-    header: () => <div className="w-full">Price</div>,
-    cell: ({ row }) => (
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
-            loading: `Saving ${row.original.price}`,
-            success: "In store",
-            error: "Error",
-          });
-        }}
-      >
-        <Label htmlFor={`${row.original.id}-price`} className="sr-only">
-          Price
-        </Label>
-        <Input
-          className="hover:bg-input/30 focus-visible:bg-background dark:hover:bg-input/30 dark:focus-visible:bg-input/30 h-8 w-16 border-transparent bg-transparent text-right shadow-none focus-visible:border dark:bg-transparent"
-          defaultValue={row.original.price}
-          id={`${row.original.id}-price`}
-        />
-      </form>
     ),
   },
   {
@@ -219,14 +194,14 @@ const columns = [
         onSubmit={(e) => {
           e.preventDefault();
           toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
-            loading: `Saving ${row.original.quantity}`,
+            loading: `Saving ${row.original.id}`,
             success: "In store",
             error: "Error",
           });
         }}
       >
         <Label htmlFor={`${row.original.id}-quantity`} className="sr-only">
-          quantity
+          Quantity
         </Label>
         <Input
           className="hover:bg-input/30 focus-visible:bg-background dark:hover:bg-input/30 dark:focus-visible:bg-input/30 h-8 w-16 border-transparent bg-transparent text-right shadow-none focus-visible:border dark:bg-transparent"
@@ -237,27 +212,27 @@ const columns = [
     ),
   },
   {
-    accessorKey: "reviewer",
-    header: "Reviewer",
+    accessorKey: "amount",
+    header: "Amount",
     cell: ({ row }) => {
-      const isAssigned = row.original.reviewer !== "Assign reviewer";
+      const isAssigned = row.original.amount !== "Assign amount";
 
       if (isAssigned) {
-        return row.original.reviewer;
+        return row.original.amount;
       }
 
       return (
         <>
-          <Label htmlFor={`${row.original.id}-reviewer`} className="sr-only">
-            Reviewer
+          <Label htmlFor={`${row.original.id}-amount`} className="sr-only">
+            amount
           </Label>
           <Select>
             <SelectTrigger
               className="w-38 **:data-[slot=select-value]:block **:data-[slot=select-value]:truncate"
               size="sm"
-              id={`${row.original.id}-reviewer`}
+              id={`${row.original.id}-amount`}
             >
-              <SelectValue placeholder="Assign reviewer" />
+              <SelectValue placeholder="Assign amount" />
             </SelectTrigger>
             <SelectContent align="end">
               <SelectItem value="Eddie Lake">Eddie Lake</SelectItem>
@@ -319,7 +294,7 @@ function DraggableRow({ row }) {
   );
 }
 
-export function DataTable({ data: initialData }) {
+export function DataOrders({ data: initialData }) {
   const [data, setData] = React.useState(() => initialData);
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] = React.useState({});
@@ -392,11 +367,11 @@ export function DataTable({ data: initialData }) {
             <SelectValue placeholder="Select a view" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="outline">Products</SelectItem>
+            <SelectItem value="outline">Order ID</SelectItem>
           </SelectContent>
         </Select>
         <TabsList className="**:data-[slot=badge]:bg-muted-foreground/30 hidden **:data-[slot=badge]:size-5 **:data-[slot=badge]:rounded-full **:data-[slot=badge]:px-1 @4xl/main:flex">
-          <TabsTrigger value="outline">Products</TabsTrigger>
+          <TabsTrigger value="outline">Orders</TabsTrigger>
         </TabsList>
         <div className="flex items-center gap-2">
           <DropdownMenu>
@@ -614,12 +589,12 @@ function TableCellViewer({ item }) {
     <Drawer direction={isMobile ? "bottom" : "right"}>
       <DrawerTrigger asChild>
         <Button variant="link" className="text-foreground w-fit px-0 text-left">
-          {item.header}
+          {item.id}
         </Button>
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="gap-1">
-          <DrawerTitle>{item.header}</DrawerTitle>
+          <DrawerTitle>{item.id}</DrawerTitle>
           <DrawerDescription>
             Showing total visitors for the last 6 months
           </DrawerDescription>
@@ -684,21 +659,21 @@ function TableCellViewer({ item }) {
           )}
           <form className="flex flex-col gap-4">
             <div className="flex flex-col gap-3">
-              <Label htmlFor="header">Product</Label>
-              <Input id="header" defaultValue={item.header} />
+              <Label htmlFor="header">Order ID</Label>
+              <Input id="header" defaultValue={item.id} />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col gap-3">
-                <Label htmlFor="type">Type</Label>
-                <Select defaultValue={item.type}>
-                  <SelectTrigger id="type" className="w-full">
-                    <SelectValue placeholder="Select a type" />
+                <Label htmlFor="Product">Product</Label>
+                <Select defaultValue={item.Product}>
+                  <SelectTrigger id="Product" className="w-full">
+                    <SelectValue placeholder="Select a Product" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="Televisions">Televisions</SelectItem>
-                    <SelectItem value="Speakers">Speakers</SelectItem>
+                    <SelectItem value="Television">Television</SelectItem>
                     <SelectItem value="Headphones">Headphones</SelectItem>
                     <SelectItem value="Soundbars">Soundbars</SelectItem>
+                    <SelectItem value="Speaker">Speaker</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -709,37 +684,22 @@ function TableCellViewer({ item }) {
                     <SelectValue placeholder="Select a status" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="In store">In store</SelectItem>
-                    <SelectItem value="In Progress">Coming soon</SelectItem>
-                    <SelectItem value="Out of stock">Out of stock</SelectItem>
+                    <SelectItem value="Approved">Approved</SelectItem>
+                    <SelectItem value="Rejected">Rejected</SelectItem>
+                    <SelectItem value="Pending">Pending</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col gap-3">
-                <Label htmlFor="target">Price</Label>
-                <Input id="target" defaultValue={item.price} />
+                <Label htmlFor="target">Quantity</Label>
+                <Input id="target" defaultValue={item.target} />
               </div>
               <div className="flex flex-col gap-3">
-                <Label htmlFor="quantity">Quantity</Label>
-                <Input id="quantity" defaultValue={item.quantity} />
+                <Label htmlFor="amount">Amount</Label>
+                <Input id="amount" defaultValue={item.amount} />
               </div>
-            </div>
-            <div className="flex flex-col gap-3">
-              <Label htmlFor="reviewer">Reviewer</Label>
-              <Select defaultValue={item.reviewer}>
-                <SelectTrigger id="reviewer" className="w-full">
-                  <SelectValue placeholder="Select a reviewer" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Eddie Lake">Eddie Lake</SelectItem>
-                  <SelectItem value="Jamik Tashpulatov">
-                    Jamik Tashpulatov
-                  </SelectItem>
-                  <SelectItem value="Emily Whalen">Emily Whalen</SelectItem>
-                </SelectContent>
-              </Select>
             </div>
           </form>
         </div>
