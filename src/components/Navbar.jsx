@@ -20,13 +20,21 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isProductPage = location.pathname.includes("/products");
-  const isTransparent = isAtTop && !isHovered && !isMenuOpen && !isProductPage;
+  const path = location.pathname;
+
+  const isHome = path === "/";
+  const isProductDetails = /^\/products\/[^/]+\/[^/]+$/.test(path);
+
+  const isTransparent =
+    (isHome || isProductDetails) && isAtTop && !isHovered && !isMenuOpen;
+  const isFixed = isHome || isProductDetails;
 
   return (
     <>
       <nav
-        className={`w-full fixed top-0 z-50 transition-all duration-300 ${
+        className={`w-full ${
+          isFixed ? "fixed top-0 z-50" : "relative"
+        } transition-all duration-300 ${
           isTransparent ? "bg-transparent" : "bg-white shadow-md"
         }`}
         onMouseEnter={() => setIsHovered(true)}

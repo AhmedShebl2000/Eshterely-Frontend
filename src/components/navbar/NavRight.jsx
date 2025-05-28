@@ -2,6 +2,8 @@ import { Link } from "react-router";
 import { useCart } from "../../Contexts/CartContext";
 import CartProducts from "../Cart/CartProducts";
 import { useEffect, useState } from "react";
+import { getToken } from "../../utils/authHelpers";
+import Logout from "../logout/Logout";
 
 export default function NavRight({ isTransparent }) {
   const { setShowCart, showCart, productArr } = useCart();
@@ -22,36 +24,39 @@ export default function NavRight({ isTransparent }) {
 
   return (
     <div className="flex items-center space-x-6">
-      <Link
-        to="/login"
-        className={`transition-colors duration-300 ${
-          isTransparent
-            ? "text-white hover:text-gray-200"
-            : "text-black hover:text-gray-600"
-        }`}
-      >
-        <svg
-          className="w-6 h-6"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+      {getToken() ? (
+        <Logout isTransparent={isTransparent} />
+      ) : (
+        <Link
+          to="/login"
+          className={`transition-colors duration-300 ${
+            isTransparent
+              ? "text-white hover:text-gray-200"
+              : "text-black hover:text-gray-600"
+          }`}
         >
-          <path
-            d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"
+          <svg
+            className="w-6 h-6"
+            viewBox="0 0 24 24"
+            fill="none"
             stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </Link>
+          >
+            <path
+              d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </Link>
+      )}
+
       <Link
         to="/locations"
         className={`transition-colors duration-300 ${
