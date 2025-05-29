@@ -1,5 +1,5 @@
 import { useState } from "react";
-import DiffDeliveryAddress from "./diffDeliveryAddress";
+import DiffDeliveryAddress from "./DiffDeliveryAddress";
 
 function Delivery({ anotherDelieveryFormData, setAnotherDelieveryFormData }) {
   const [deliveryAddress, setDeliveryAddress] = useState("default");
