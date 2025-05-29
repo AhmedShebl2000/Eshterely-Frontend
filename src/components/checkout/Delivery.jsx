@@ -1,11 +1,11 @@
 import { useState } from "react";
-import InformationForm from "./InformationForm";
+import DiffDeliveryAddress from "./diffDeliveryAddress";
 
-function Delivery() {
+function Delivery({ anotherDelieveryFormData, setAnotherDelieveryFormData }) {
   const [deliveryAddress, setDeliveryAddress] = useState("default");
 
   return (
-    <div className="flex flex-col gap-3 bg-[#FAFAFA] w-full p-4 rounded-md md:p-14 md:w-[400px]">
+    <div className="flex flex-col gap-3 bg-[#FAFAFA] w-full mt-5 rounded-md md:w-[400px]">
       <h1 className="font-semibold tracking-widest ml-1">DELIVERY ADDRESS</h1>
       <div>
         <input
@@ -36,8 +36,12 @@ function Delivery() {
           Add an alternative delivery address
         </span>
       </div>
-
-      {deliveryAddress === "add" && <InformationForm />}
+      {deliveryAddress === "add" && (
+        <DiffDeliveryAddress
+          anotherDelieveryFormData={anotherDelieveryFormData}
+          setAnotherDelieveryFormData={setAnotherDelieveryFormData}
+        />
+      )}
     </div>
   );
 }

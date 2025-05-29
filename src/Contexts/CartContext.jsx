@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { getToken, isLoggedIn } from "../utils/authHelpers";
 import cartToasts from "../utils/cartToasts";
-import Cookies from "js-cookie";
 
 const CartContext = createContext();
 
@@ -128,6 +127,26 @@ function CartProvider({ children }) {
     }
   }
 
+  async function deleteAllFromCart() {
+    try {
+      const res = await fetch(`https://eshterely.up.railway.app/api/cart`, {
+        method: "DELETE",
+        headers: {
+          "x-auth-token": getToken(),
+        },
+      });
+      if (!res.ok) {
+        throw new Error("Failed to clear cart");
+      }
+      console.log(res);
+      const updatedCart = await res.json();
+      setProductArr([]);
+      console.log(data);
+    } catch (error) {
+      console.log("error deleting all products in cart", error);
+    }
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -141,6 +160,7 @@ function CartProvider({ children }) {
         fetchCart,
         isLoading,
         error,
+        deleteAllFromCart,
       }}
     >
       {children}

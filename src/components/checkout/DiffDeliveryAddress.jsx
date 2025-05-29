@@ -3,11 +3,11 @@ import AcceptTerms from "./AcceptTerms";
 import { billingAddressSchema } from "../../schemas";
 import formToasts from "../../utils/formToasts";
 
-function InformationForm({
+function DiffDeliveryAddress({
   children,
   showConsent,
-  setSubmittedData,
-  submittedData,
+  anotherDelieveryFormData,
+  setAnotherDelieveryFormData,
 }) {
   const {
     values,
@@ -30,8 +30,8 @@ function InformationForm({
     },
     validationSchema: billingAddressSchema,
     onSubmit: (values) => {
-      setSubmittedData(values);
-      console.log("Form submitted:", values);
+      setAnotherDelieveryFormData(values);
+      console.log("Another Form submitted:", values);
       resetForm();
       formToasts.success("Form submitted successfully!");
     },
@@ -231,4 +231,4 @@ function InformationForm({
   );
 }
 
-export default InformationForm;
+export default DiffDeliveryAddress;

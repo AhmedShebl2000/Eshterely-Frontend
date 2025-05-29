@@ -2,14 +2,83 @@ import { useEffect, useRef, useState } from "react";
 import Button from "../../UI/Button";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
+import { useCart } from "../../Contexts/CartContext";
+import { getToken } from "../../utils/authHelpers";
 
-const TOTAL_PRICE_FOR_ORDER = 1241;
-
-function Paypal() {
+function Paypal({ submittedData }) {
   const [orderId, setOrderId] = useState(null);
   const [showSuccess, setShowSuccess] = useState(false);
 
+  const { productArr, deleteAllFromCart } = useCart();
+
+  const totalPrice = productArr.reduce((accum, current) => {
+    const total = Number(current.price) || 0;
+    const quantity = Number(current.quantity) || 0;
+    return accum + total * quantity;
+  }, 0);
+
+  const vatAmount = totalPrice * 0.14;
+
+  const totalPriceWithVat = totalPrice + vatAmount;
+  console.log(totalPriceWithVat);
+  console.log(totalPrice);
+
   const paypal = useRef();
+
+  async function postOrder() {
+    try {
+      console.log("Submitting order with shipping info:", submittedData);
+      if (
+        !submittedData ||
+        !submittedData.firstName ||
+        !submittedData.phoneNumber
+      ) {
+        console.error("Incomplete shipping information", submittedData);
+        return;
+      }
+
+      const token = getToken();
+      console.log("Token value:", token);
+      if (!token) {
+        console.error("No authentication token found");
+        return;
+      }
+      console.log(productArr);
+
+      const res = await fetch(`https://eshterely.up.railway.app/api/orders`, {
+        // const res = await fetch(`http://localhost:5000/api/orders`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          "x-auth-token": token,
+        },
+        body: JSON.stringify({
+          items: productArr || [],
+          total: totalPriceWithVat,
+          shippingInfo: {
+            ...submittedData,
+            addressLine1: submittedData.addressLine,
+            addressLine2: "",
+          },
+        }),
+      });
+      console.log(res);
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        console.error("Order submission error details:", errorData);
+        throw new Error(
+          `HTTP error! Status: ${res.status}, Details: ${JSON.stringify(
+            errorData
+          )}`
+        );
+      }
+      const data = await res.json();
+      console.log("Order response:", data);
+      await deleteAllFromCart();
+    } catch (error) {
+      console.error("Order submission error:", error.message);
+    }
+  }
 
   useEffect(() => {
     const button = window.paypal.Buttons({
@@ -21,7 +90,7 @@ function Paypal() {
               description: "Cool purchase",
               amount: {
                 currency_code: "USD",
-                value: TOTAL_PRICE_FOR_ORDER,
+                value: totalPriceWithVat,
               },
             },
           ],
@@ -31,6 +100,7 @@ function Paypal() {
         const order = await actions.order.capture();
         console.log("Order Successful: ", order);
         setOrderId(order.id);
+        await postOrder();
         setShowSuccess(true);
       },
       onError: (err) => {
@@ -43,10 +113,10 @@ function Paypal() {
     return () => {
       button.close();
     };
-  }, []);
+  }, [totalPriceWithVat, postOrder, submittedData]);
 
   return (
-    <div className="bg-[#FAFAFA] w-[800px] flex flex-col justify-center items-center p-4 gap-4">
+    <div className="bg-[#FAFAFA] w-full mt-5 flex flex-col justify-center items-center p-4 gap-4">
       {!showSuccess && (
         <h1 className="font-semibold text-lg tracking-widest">
           EXPRESS CHECKOUT

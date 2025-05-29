@@ -16,7 +16,7 @@ export const billingAddressSchema = yup.object().shape({
   phoneNumber: yup
     .string()
     .required("Phone Number is required")
-    .matches("^d+$"),
+    .matches(/^\d+$/, "Phone number must contain only digits"),
 });
 
 export const registrationSchema = yup.object().shape({
