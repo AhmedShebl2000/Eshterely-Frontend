@@ -250,9 +250,7 @@ export function DataUsers({ data: initialData, deleteUser }) {
               <span className="sr-only">Open menu</span>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-32">
-            <DropdownMenuItem>Edit</DropdownMenuItem>
-            <DropdownMenuSeparator />
+          <DropdownMenuContent align="center" className="w-32">
             <DropdownMenuItem
               variant="destructive"
               onClick={() => handleDeleteUser(row.original.id)}
