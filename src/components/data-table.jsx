@@ -341,9 +341,7 @@ export function DataTable({ data: initialData, deleteProduct, updateProduct }) {
               <span className="sr-only">Open menu</span>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-32">
-            <DropdownMenuItem>Edit</DropdownMenuItem>
-            <DropdownMenuSeparator />
+          <DropdownMenuContent align="center" className="w-32">
             <DropdownMenuItem
               variant="destructive"
               onClick={() => {
