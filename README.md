@@ -36,8 +36,8 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [https://eshtrely.netlify.app/](https://eshtrely.netlify.app/)
-- Backend API URL: [https://eshterely.up.railway.app/api](https://eshterely.up.railway.app/api)
+- Live Site URL: (https://eshtrely.netlify.app/)
+- Backend API URL: (https://eshterely.up.railway.app/api)
 - Web Application Solution URL: (https://github.com/AhmedShebl2000/Eshterely-Frontend/)
 - Backend Solution URL: (https://github.com/Youssef-Yasser-Mahmoud/Eshterely-backend/)
 
