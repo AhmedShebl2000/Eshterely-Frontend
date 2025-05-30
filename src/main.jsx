@@ -19,6 +19,10 @@ import CartPage from "./pages/CartPage.jsx";
 import ForgorPassword from "./pages/ForgorPassword.jsx";
 import ResetPassword from "./pages/ResetPassword.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
+import HospitalityPage from "./pages/HospitalityPage.jsx";
+import ReachOutPage from "./pages/ReachOutPage.jsx";
+import YachtsPage from "./pages/YachtsPage.jsx";
+import CommercialSpacePage from "./pages/CommercialSpacePage.jsx";
 
 // admin-dashboard pages
 const AdminDashboardLayout = lazy(() =>
@@ -81,6 +85,22 @@ const router = createBrowserRouter([
       {
         path: "/about",
         Component: AboutPage,
+      },
+      {
+        path: "/hospitality",
+        Component: HospitalityPage,
+      },
+      {
+        path: "/reach-out",
+        Component: ReachOutPage,
+      },
+      {
+        path: "/yachts",
+        Component: YachtsPage,
+      },
+      {
+        path: "/commercial-space",
+        Component: CommercialSpacePage,
       },
       {
         path: "/faq",

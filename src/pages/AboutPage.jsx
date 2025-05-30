@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router";
+
 function AboutPage() {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="flex flex-col items-center justify-start min-h-screen px-6 pt-32 text-center">
@@ -96,6 +100,15 @@ function AboutPage() {
               and visual experience for guests. Taking their luxury stay to
               another level.
             </p>
+
+            {/* Hospitality Button */}
+
+            <button
+              onClick={() => navigate("/hospitality")}
+              className="mt-2 px-6 py-2 border border-black rounded-full hover:bg-black hover:text-white transition cursor-pointer"
+            >
+              Learn more
+            </button>
           </div>
         </div>
 
@@ -116,7 +129,13 @@ function AboutPage() {
               Seamless interfaces make navigation easy.
             </p>
             <p>Stunning designs. High fidelity at the touch of a button.</p>
-            <button className="mt-2 px-6 py-2 border border-black rounded-full hover:bg-black hover:text-white transition cursor-pointer">
+
+            {/* Yachts Button */}
+
+            <button
+              onClick={() => navigate("/yachts")}
+              className="mt-2 px-6 py-2 border border-black rounded-full hover:bg-black hover:text-white transition cursor-pointer"
+            >
               Learn more
             </button>
           </div>
@@ -165,7 +184,12 @@ function AboutPage() {
               solutions that are music to your clients’ eyes and ears. Creating
               immersive moments that truly connect.
             </p>
-            <button className="mt-2 px-6 py-2 border border-black rounded-full hover:bg-black hover:text-white transition cursor-pointer">
+
+            {/* Commercial-Space Button */}
+            <button
+              onClick={() => navigate("/commercial-space")}
+              className="mt-2 px-6 py-2 border border-black rounded-full hover:bg-black hover:text-white transition cursor-pointer"
+            >
               Learn more
             </button>
           </div>
@@ -179,7 +203,11 @@ function AboutPage() {
             more about how we work with companies to develop bespoke solutions
             that sound as good as they look.
           </p>
-          <button className="px-8 py-3 bg-black text-white rounded-full hover:opacity-80 transition cursor-pointer">
+          {/* Reach-Out Button */}
+          <button
+            onClick={() => navigate("/reach-out")}
+            className="px-8 py-3 bg-black text-white rounded-full hover:opacity-80 transition cursor-pointer"
+          >
             Reach out
           </button>
         </div>
