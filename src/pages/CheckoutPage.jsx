@@ -1,23 +1,20 @@
-import { useState } from "react";
-import AcceptTerms from "../components/checkout/AcceptTerms";
+import { useEffect, useState } from "react";
 import BillingSummary from "../components/checkout/BillingSummary";
 import CheckoutItems from "../components/checkout/CheckoutItems";
-import Delivery from "../components/checkout/Delivery";
 import ShippingMethod from "../components/checkout/ShippingMethod";
 import PlaceOrder from "../components/checkout/PlaceOrder";
 import InformationForm from "../components/checkout/InformationForm";
-import Paypal from "../components/checkout/Paypal";
 import { useCart } from "../Contexts/CartContext";
+import PaymentMethod from "../components/checkout/PaymentMethod";
+import { Link } from "react-router";
 
 function CheckoutPage() {
   const [shippingMethod, setShippingMethod] = useState("0");
+  const [submittedData, setSubmittedData] = useState(null);
+  const [anotherDelieveryFormData, setAnotherDelieveryFormData] =
+    useState(null);
 
   const { productArr } = useCart();
-
-  // const totalPriceWithoutVAT = productArr.reduce(
-  //   (accum, current) => accum + current.total * current.quantity,
-  //   0
-  // );
 
   const totalPriceWithoutVAT = productArr.reduce((accum, current) => {
     const total = Number(current.price) || 0;
@@ -26,6 +23,12 @@ function CheckoutPage() {
   }, 0);
 
   const totalPrice = totalPriceWithoutVAT + 0.14 * totalPriceWithoutVAT;
+
+  useEffect(() => {
+    if (productArr.length === 0) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [productArr]);
 
   return (
     <div className="flex flex-col items-center gap-5">
@@ -47,37 +50,72 @@ function CheckoutPage() {
 
         <CheckoutItems productArr={productArr} totalPrice={totalPrice} />
       </div>
-      {/* PAYPAL AND CREDIT CARD GO HERE */}
 
-      <Paypal />
-
-      {/* SEPARATOR IN MEDIUM-LARGE SCREENS ONLY */}
-      <div class="inline-flex items-center justify-center w-full text-[#8C8C8C]">
-        <hr class="w-[600px] h-px my-8" />
-        <span class="absolute px-3 font-medium -translate-x-1/4  bg-white left-1/2 ">
-          OR
-        </span>
-      </div>
-
-      {/* NOW THE DELIVERY PART */}
-      <div className="hidden w-[800px] md:flex md:justify-between gap-3">
-        <div className=" w-6/12 flex flex-col ">
-          <InformationForm showConsent={true}>BILLING ADDRESS</InformationForm>
+      {productArr.length > 0 ? (
+        <>
+          {/* NOW THE DELIVERY PART */}
+          <div className=" w-[800px] gap-3">
+            <div className="  flex flex-col ">
+              <InformationForm
+                showConsent={true}
+                submittedData={submittedData}
+                setSubmittedData={setSubmittedData}
+              >
+                Shipping Address
+              </InformationForm>
+            </div>
+            <div className="w-full">
+              <PaymentMethod
+                submittedData={submittedData}
+                anotherDelieveryFormData={anotherDelieveryFormData}
+                setAnotherDelieveryFormData={setAnotherDelieveryFormData}
+              />
+            </div>
+          </div>
+          <div className="md:hidden flex flex-col gap-4">
+            <InformationForm
+              showConsent={true}
+              submittedData={submittedData}
+              setSubmittedData={setSubmittedData}
+            >
+              Shipping Address
+            </InformationForm>
+            <div className="w-full">
+              <PaymentMethod
+                submittedData={submittedData}
+                anotherDelieveryFormData={anotherDelieveryFormData}
+                setAnotherDelieveryFormData={setAnotherDelieveryFormData}
+              />
+            </div>
+          </div>
+          <ShippingMethod
+            shippingMethod={shippingMethod}
+            setShippingMethod={setShippingMethod}
+          />
+          <BillingSummary
+            shippingMethod={shippingMethod}
+            totalPrice={totalPrice}
+          />
+          <PlaceOrder
+            anotherDelieveryFormData={anotherDelieveryFormData}
+            setAnotherDelieveryFormData={setAnotherDelieveryFormData}
+            submittedData={submittedData}
+            setSubmittedData={setSubmittedData}
+          />
+        </>
+      ) : (
+        <div className="flex items-center justify-center h-[40vh] flex-col gap-10">
+          <p className="font-semibold text-3xl">
+            You have no items in cart yet.
+          </p>
+          <Link
+            to={"/"}
+            className="w-50 px-8 py-2 bg-[#FFB800] text-black font-semibold rounded-full hover:bg-[#FFD700] transition-colors cursor-pointer text-center"
+          >
+            Back to Home
+          </Link>
         </div>
-        <div className=" w-6/12">
-          <Delivery />
-        </div>
-      </div>
-      <div className="md:hidden flex flex-col gap-4">
-        <InformationForm showConsent={true}>BILLING ADDRESS</InformationForm>
-        <Delivery />
-      </div>
-      <ShippingMethod
-        shippingMethod={shippingMethod}
-        setShippingMethod={setShippingMethod}
-      />
-      <BillingSummary shippingMethod={shippingMethod} totalPrice={totalPrice} />
-      <PlaceOrder />
+      )}
     </div>
   );
 }

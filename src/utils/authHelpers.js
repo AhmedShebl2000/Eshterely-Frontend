@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 export function setToken(token, rememberMe) {
   const options = {
     secure: true,
-    sameSite: "strict",
+    sameSite: "lax",
     expires: rememberMe
       ? new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
       : undefined,

@@ -12,7 +12,7 @@ function CheckoutItem({ item }) {
           <div className="flex  justify-between">
             <p>Total:</p>
             <p className="font-light">
-              € {(item.price * item.quantity).toFixed(2)}
+              € {(item.price * item.quantity + VAT).toFixed(2)}
             </p>
           </div>
         </div>
