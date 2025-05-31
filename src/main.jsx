@@ -46,11 +46,13 @@ import { loader as usersLoader } from "./components/dashboard/Users.jsx";
 import { Toaster } from "sonner";
 import FAQPage from "./pages/FAQPage.jsx";
 import FAQDetails from "./pages/FAQDetails.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: App,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
