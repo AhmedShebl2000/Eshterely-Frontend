@@ -25,6 +25,7 @@ import YachtsPage from "./pages/YachtsPage.jsx";
 import CommercialSpacePage from "./pages/CommercialSpacePage.jsx";
 import FAQPage from "./pages/FAQPage.jsx";
 import FAQDetails from "./pages/FAQDetails.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
 import OrderHistory, {
   loader as OrderHistoryLoader,
 } from "./pages/OrderHistory.jsx";
@@ -54,6 +55,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     Component: App,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
