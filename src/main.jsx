@@ -23,6 +23,11 @@ import HospitalityPage from "./pages/HospitalityPage.jsx";
 import ReachOutPage from "./pages/ReachOutPage.jsx";
 import YachtsPage from "./pages/YachtsPage.jsx";
 import CommercialSpacePage from "./pages/CommercialSpacePage.jsx";
+import FAQPage from "./pages/FAQPage.jsx";
+import FAQDetails from "./pages/FAQDetails.jsx";
+import OrderHistory, {
+  loader as OrderHistoryLoader,
+} from "./pages/OrderHistory.jsx";
 
 // admin-dashboard pages
 const AdminDashboardLayout = lazy(() =>
@@ -44,8 +49,6 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import { loader as productsLoader } from "./components/dashboard/Products.jsx";
 import { loader as usersLoader } from "./components/dashboard/Users.jsx";
 import { Toaster } from "sonner";
-import FAQPage from "./pages/FAQPage.jsx";
-import FAQDetails from "./pages/FAQDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -109,6 +112,11 @@ const router = createBrowserRouter([
       {
         path: "/faqDetails/:id",
         Component: FAQDetails,
+      },
+      {
+        path: "order-history",
+        Component: OrderHistory,
+        loader: OrderHistoryLoader,
       },
     ],
   },

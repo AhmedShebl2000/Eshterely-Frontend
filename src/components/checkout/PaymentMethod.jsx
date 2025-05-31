@@ -6,9 +6,9 @@ function PaymentMethod({
   submittedData,
   anotherDelieveryFormData,
   setAnotherDelieveryFormData,
+  paymentMethod,
+  setPaymentMethod,
 }) {
-  const [paymentMethod, setPaymentMethod] = useState("online");
-
   return (
     <div className="flex flex-col gap-3 bg-[#FAFAFA] w-full p-4 rounded-md md:p-14 mt-5">
       <h1 className="font-semibold tracking-widest ml-1 text-lg">

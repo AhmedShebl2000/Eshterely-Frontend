@@ -46,3 +46,17 @@ export function getLoginState() {
     rememberMe: getRememberMe(),
   };
 }
+
+export function getUserIdFromToken() {
+  try {
+    const token = getToken();
+    if (!token) return null;
+
+    const decoded = jwtDecode(token);
+    console.log(decoded);
+    return decoded._id;
+  } catch (error) {
+    console.error("Error decoding token:", error);
+    return null;
+  }
+}

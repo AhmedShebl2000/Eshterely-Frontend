@@ -28,7 +28,7 @@ function CartPage() {
 
   if (productArr.length === 0 && !isLoading)
     return (
-      <div className="flex items-center justify-center min-h-screen flex-col gap-10">
+      <div className="flex items-center justify-center min-h-[80vh] flex-col gap-10">
         <p className="font-semibold text-3xl">You have no items in cart yet.</p>
         <Link
           to={"/"}

@@ -69,16 +69,30 @@ export default function Sidebar({ isOpen, onClose }) {
             >
               Televisions
             </Link>
-            <Link
-              to="/products/accessories"
-              className="block py-2 hover:bg-gray-100 transition-colors"
-              onClick={onClose}
-            >
-              Accessories
-            </Link>
           </nav>
 
           <div className="mt-auto space-y-4">
+            <Link
+              to="/order-history"
+              className="flex items-center py-2 hover:bg-gray-100 transition-colors"
+              onClick={onClose}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+                />
+              </svg>
+              Order History
+            </Link>
             <Link
               to="/locations"
               className="flex items-center py-2 hover:bg-gray-100 transition-colors"

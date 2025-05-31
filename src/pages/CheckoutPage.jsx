@@ -13,6 +13,7 @@ function CheckoutPage() {
   const [submittedData, setSubmittedData] = useState(null);
   const [anotherDelieveryFormData, setAnotherDelieveryFormData] =
     useState(null);
+  const [paymentMethod, setPaymentMethod] = useState("online");
 
   const { productArr } = useCart();
 
@@ -69,6 +70,8 @@ function CheckoutPage() {
                 submittedData={submittedData}
                 anotherDelieveryFormData={anotherDelieveryFormData}
                 setAnotherDelieveryFormData={setAnotherDelieveryFormData}
+                paymentMethod={paymentMethod}
+                setPaymentMethod={setPaymentMethod}
               />
             </div>
           </div>
@@ -85,6 +88,8 @@ function CheckoutPage() {
                 submittedData={submittedData}
                 anotherDelieveryFormData={anotherDelieveryFormData}
                 setAnotherDelieveryFormData={setAnotherDelieveryFormData}
+                paymentMethod={paymentMethod}
+                setPaymentMethod={setPaymentMethod}
               />
             </div>
           </div>
@@ -96,12 +101,14 @@ function CheckoutPage() {
             shippingMethod={shippingMethod}
             totalPrice={totalPrice}
           />
-          <PlaceOrder
-            anotherDelieveryFormData={anotherDelieveryFormData}
-            setAnotherDelieveryFormData={setAnotherDelieveryFormData}
-            submittedData={submittedData}
-            setSubmittedData={setSubmittedData}
-          />
+          {paymentMethod === "onDelivery" ? (
+            <PlaceOrder
+              anotherDelieveryFormData={anotherDelieveryFormData}
+              setAnotherDelieveryFormData={setAnotherDelieveryFormData}
+              submittedData={submittedData}
+              setSubmittedData={setSubmittedData}
+            />
+          ) : null}
         </>
       ) : (
         <div className="flex items-center justify-center h-[40vh] flex-col gap-10">

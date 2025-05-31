@@ -33,17 +33,6 @@ function PlaceOrder({ anotherDelieveryFormData, submittedData }) {
         "Another submitting order with shipping info:",
         anotherDelieveryFormData
       );
-      if (
-        !anotherDelieveryFormData ||
-        !anotherDelieveryFormData.firstName ||
-        !anotherDelieveryFormData.phoneNumber
-      ) {
-        console.error(
-          "Incomplete shipping information",
-          anotherDelieveryFormData
-        );
-        return;
-      }
 
       const token = getToken();
       console.log("Token value:", token);
@@ -53,8 +42,23 @@ function PlaceOrder({ anotherDelieveryFormData, submittedData }) {
       }
       console.log(productArr);
 
+      // Prepare shipping info object
+      const shippingInfo = {
+        firstName: submittedData.firstName,
+        lastName: submittedData.lastName,
+        email: submittedData.email,
+        country: submittedData.country,
+        addressLine1: submittedData.addressLine,
+        city: submittedData.city,
+        postalCode: submittedData.postalCode,
+        phoneNumber: submittedData.phoneNumber,
+      };
+
+      if (anotherDelieveryFormData?.addressLine) {
+        shippingInfo.addressLine2 = anotherDelieveryFormData.addressLine;
+      }
+
       const res = await fetch(`https://eshterely.up.railway.app/api/orders`, {
-        // const res = await fetch(`http://localhost:5000/api/orders`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -63,11 +67,7 @@ function PlaceOrder({ anotherDelieveryFormData, submittedData }) {
         body: JSON.stringify({
           items: productArr || [],
           total: totalPriceWithVat,
-          shippingInfo: {
-            ...submittedData,
-            addressLine1: submittedData.addressLine,
-            addressLine2: anotherDelieveryFormData.addressLine,
-          },
+          shippingInfo,
         }),
       });
       console.log(res);
