@@ -12,16 +12,18 @@ export default function ReachOutPage() {
       </div>
 
       {/* Video Section */}
-      <div className="w-full h-[60vh] overflow-hidden">
-        <video
-          className="w-full h-full object-cover"
-          autoPlay
-          loop
-          muted
-          playsInline
-          src="https://videos.ctfassets.net/8cd2csgvqd3m/1FjfaBImEcAmhblTOcKqCd/e69e34da1cfde4c97c752397090613a7/Corporate_-_Reach_Out_-_Lobby_-_video.mp4"
-        />
-      </div>
+      <section className="w-full mt-10">
+        <div className="max-w-8xl mx-auto px-4">
+          <video
+            className="w-full h-[700px] object-cover rounded-xl"
+            autoPlay
+            loop
+            muted
+            playsInline
+            src="https://videos.ctfassets.net/8cd2csgvqd3m/1FjfaBImEcAmhblTOcKqCd/e69e34da1cfde4c97c752397090613a7/Corporate_-_Reach_Out_-_Lobby_-_video.mp4"
+          />
+        </div>
+      </section>
 
       {/* Contact Text */}
       <div className="max-w-3xl mx-auto text-center px-4 py-16">

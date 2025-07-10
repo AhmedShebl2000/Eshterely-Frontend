@@ -17,16 +17,18 @@ export default function YachtsPage() {
       </section>
 
       {/* First Video */}
-      <div className="w-full mt-10">
-        <video
-          className="w-full h-auto object-cover"
-          src="https://videos.ctfassets.net/8cd2csgvqd3m/3yI0G89l1zZNArSdGXWpkv/008720e791bff9cbb951a5ff40ab8a72/Corporate_-_Yachts_-_video.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
-      </div>
+      <section className="w-full mt-10">
+        <div className="max-w-8xl mx-auto  px-4">
+          <video
+            className="w-full h-[700px] object-cover rounded-xl"
+            src="https://videos.ctfassets.net/8cd2csgvqd3m/3yI0G89l1zZNArSdGXWpkv/008720e791bff9cbb951a5ff40ab8a72/Corporate_-_Yachts_-_video.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+        </div>
+      </section>
 
       {/* Centered Section with Button */}
       <section className="w-full px-6 py-20 bg-white flex flex-col items-center text-center max-w-6xl">
@@ -53,7 +55,7 @@ export default function YachtsPage() {
       </section>
 
       {/* Combined Image + Video Section */}
-      <section className="flex flex-col gap-20 w-full px-6 py-20 max-w-6xl">
+      <section className="flex flex-col gap-20 w-full px-6 py-5 max-w-6xl">
         {/* Row 1: Text + Image */}
         <div className="grid md:grid-cols-2 gap-10 items-center">
           {/* Text Left */}
