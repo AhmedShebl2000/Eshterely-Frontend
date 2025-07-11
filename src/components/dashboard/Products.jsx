@@ -9,7 +9,7 @@ function Products() {
 
   async function updateProduct(productId, category, updatedData) {
     const token = getToken();
-    const baseURL = import.meta.env.VITE_RAILWAY_PUBLIC_DOMAIN;
+    const baseURL = https://eshterely-backend-production.up.railway.app/api;
 
     function transformProduct(original) {
       return {
@@ -61,7 +61,7 @@ function Products() {
 
   async function deleteProduct(productId, category) {
     const token = getToken();
-    const baseURL = import.meta.env.VITE_RAILWAY_PUBLIC_DOMAIN;
+    const baseURL = https://eshterely-backend-production.up.railway.app/api;
 
     try {
       const res = await fetch(`${baseURL}/${category}/${productId}`, {
@@ -101,7 +101,7 @@ function Products() {
 }
 
 export async function loader() {
-  const baseURL = import.meta.env.VITE_RAILWAY_PUBLIC_DOMAIN;
+  const baseURL = https://eshterely-backend-production.up.railway.app/api;
 
   const endpoints = [
     `${baseURL}/televisions`,
