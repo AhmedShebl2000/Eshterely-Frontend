@@ -45,23 +45,26 @@ function Paypal({ submittedData }) {
       }
       console.log(productArr);
 
-      const res = await fetch(`https://eshterely.up.railway.app/api/orders`, {
-        // const res = await fetch(`http://localhost:5000/api/orders`, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-          "x-auth-token": token,
-        },
-        body: JSON.stringify({
-          items: productArr || [],
-          total: totalPriceWithVat,
-          shippingInfo: {
-            ...submittedData,
-            addressLine1: submittedData.addressLine,
-            addressLine2: "",
+      const res = await fetch(
+        `https://eshterely-backend-production.up.railway.app/api/orders`,
+        {
+          // const res = await fetch(`http://localhost:5000/api/orders`, {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+            "x-auth-token": token,
           },
-        }),
-      });
+          body: JSON.stringify({
+            items: productArr || [],
+            total: totalPriceWithVat,
+            shippingInfo: {
+              ...submittedData,
+              addressLine1: submittedData.addressLine,
+              addressLine2: "",
+            },
+          }),
+        }
+      );
       console.log(res);
       if (!res.ok) {
         const errorData = await res.json().catch(() => ({}));

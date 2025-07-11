@@ -58,18 +58,21 @@ function PlaceOrder({ anotherDelieveryFormData, submittedData }) {
         shippingInfo.addressLine2 = anotherDelieveryFormData.addressLine;
       }
 
-      const res = await fetch(`https://eshterely.up.railway.app/api/orders`, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-          "x-auth-token": token,
-        },
-        body: JSON.stringify({
-          items: productArr || [],
-          total: totalPriceWithVat,
-          shippingInfo,
-        }),
-      });
+      const res = await fetch(
+        `https://eshterely-backend-production.up.railway.app/api/orders`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+            "x-auth-token": token,
+          },
+          body: JSON.stringify({
+            items: productArr || [],
+            total: totalPriceWithVat,
+            shippingInfo,
+          }),
+        }
+      );
       console.log(res);
       if (!res.ok) {
         const errorData = await res.json().catch(() => ({}));

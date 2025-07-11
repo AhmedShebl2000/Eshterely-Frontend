@@ -23,9 +23,12 @@ function CartProvider({ children }) {
 
     try {
       setIsLoading(true);
-      const res = await fetch(`https://eshterely.up.railway.app/api/cart`, {
-        headers: { "x-auth-token": getToken() },
-      });
+      const res = await fetch(
+        `https://eshterely-backend-production.up.railway.app/api/cart`,
+        {
+          headers: { "x-auth-token": getToken() },
+        }
+      );
       if (!res.ok) throw new Error("Failed to fetch cart");
       const data = await res.json();
       // console.log(data);
@@ -63,14 +66,17 @@ function CartProvider({ children }) {
       }
 
       setIsLoading(true);
-      const res = await fetch(`https://eshterely.up.railway.app/api/cart`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          "x-auth-token": token,
-        },
-        body: JSON.stringify({ product, quantity }),
-      });
+      const res = await fetch(
+        `https://eshterely-backend-production.up.railway.app/api/cart`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "x-auth-token": token,
+          },
+          body: JSON.stringify({ product, quantity }),
+        }
+      );
 
       if (!res.ok) {
         const errorData = await res.json();
@@ -99,7 +105,7 @@ function CartProvider({ children }) {
     try {
       setIsLoading(true);
       const res = await fetch(
-        `https://eshterely.up.railway.app/api/cart/${productId}`,
+        `https://eshterely-backend-production.up.railway.app/api/cart/${productId}`,
         {
           method: "DELETE",
           headers: {
@@ -129,12 +135,15 @@ function CartProvider({ children }) {
 
   async function deleteAllFromCart() {
     try {
-      const res = await fetch(`https://eshterely.up.railway.app/api/cart`, {
-        method: "DELETE",
-        headers: {
-          "x-auth-token": getToken(),
-        },
-      });
+      const res = await fetch(
+        `https://eshterely-backend-production.up.railway.app/api/cart`,
+        {
+          method: "DELETE",
+          headers: {
+            "x-auth-token": getToken(),
+          },
+        }
+      );
       if (!res.ok) {
         throw new Error("Failed to clear cart");
       }

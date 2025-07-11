@@ -33,7 +33,7 @@ function Login() {
     setLoginError(null);
     try {
       const res = await axios.post(
-        "https://eshterely.up.railway.app/api/auth/login",
+        "https://eshterely-backend-production.up.railway.app/api/auth/login",
         {
           email: data.email,
           password: data.password,
