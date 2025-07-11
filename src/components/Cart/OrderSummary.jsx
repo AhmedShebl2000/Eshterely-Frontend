@@ -56,8 +56,10 @@ function OrderSummary({ vat, totalPrice }) {
               € {Number(totalPrice).toLocaleString()}
             </span>{" "}
             €{" "}
-            {Number(totalPrice).toLocaleString() -
-              (discount / 100) * Number(totalPrice).toLocaleString()}
+            {(
+              Number(totalPrice) -
+              (discount / 100) * Number(totalPrice)
+            ).toLocaleString()}
             <span className="ml-2 text-green-700">({discount}% off)</span>
           </p>
         )}
