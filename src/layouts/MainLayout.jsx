@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/footer/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ChatWidget from "@/components/ChatWidget";
 
 function MainLayout() {
   const location = useLocation();
@@ -13,6 +14,7 @@ function MainLayout() {
       {!hideNavbar && <Navbar />}
       <main>
         <Outlet />
+        <ChatWidget />
       </main>
       <div className="mt-auto">
         <Footer />
