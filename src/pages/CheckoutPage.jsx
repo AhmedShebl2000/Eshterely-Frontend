@@ -33,24 +33,30 @@ function CheckoutPage() {
 
   return (
     <div className="flex flex-col items-center gap-5">
-      <div className="grid grid-cols-1 w-[400px] gap-y-3 p-4 px-10 md:hidden">
-        <h1 className="font-semibold tracking-widest">ORDER SUMMARY</h1>
-        <hr className="text-[#d9d9d9]"></hr>
-        <CheckoutItems productArr={productArr} totalPrice={totalPrice} />
-      </div>
-      <div className="hidden md:mt-8  md:flex md:flex-col md:gap-3 md:w-[800px]">
-        <div className="flex">
-          <p className="w-6/12 font-semibold tracking-widest">ORDER SUMMARY</p>
-          <p className="w-2/12 font-semibold tracking-widest">QUANTITY</p>
-          <p className="w-2/12 font-semibold tracking-widest">PRICE</p>
-          <p className="w-2/12 font-semibold tracking-widest text-center">
-            TOTAL + VAT
-          </p>
-        </div>
-        <hr className="text-[#d9d9d9]"></hr>
+      {productArr.length > 0 && (
+        <div>
+          <div className="grid grid-cols-1 w-[400px] gap-y-3 p-4 px-10 md:hidden">
+            <h1 className="font-semibold tracking-widest">ORDER SUMMARY</h1>
+            <hr className="text-[#d9d9d9]"></hr>
+            <CheckoutItems productArr={productArr} totalPrice={totalPrice} />
+          </div>
+          <div className="hidden md:mt-8  md:flex md:flex-col md:gap-3 md:w-[800px]">
+            <div className="flex">
+              <p className="w-6/12 font-semibold tracking-widest">
+                ORDER SUMMARY
+              </p>
+              <p className="w-2/12 font-semibold tracking-widest">QUANTITY</p>
+              <p className="w-2/12 font-semibold tracking-widest">PRICE</p>
+              <p className="w-2/12 font-semibold tracking-widest text-center">
+                TOTAL + VAT
+              </p>
+            </div>
+            <hr className="text-[#d9d9d9]"></hr>
+          </div>
 
-        <CheckoutItems productArr={productArr} totalPrice={totalPrice} />
-      </div>
+          <CheckoutItems productArr={productArr} totalPrice={totalPrice} />
+        </div>
+      )}
 
       {productArr.length > 0 ? (
         <>
