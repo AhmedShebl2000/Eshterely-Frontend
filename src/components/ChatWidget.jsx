@@ -26,9 +26,12 @@ const ChatWidget = () => {
     setMessages((prev) => [...prev, typingIndicator]);
 
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/chatbot`, {
-        message: input,
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/chatbot`,
+        {
+          message: input,
+        }
+      );
 
       const botReply = res.data.reply;
 
