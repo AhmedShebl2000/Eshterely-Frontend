@@ -47,7 +47,7 @@ function RegistrationForm() {
     try {
       setIsLoading(true);
       const res = await axios.post(
-        "https://eshterely-backend-production.up.railway.app/api/auth/register",
+        "observant-learning-production.up.railway.app/api/auth/register",
         newUser
       );
       console.log(res.data);

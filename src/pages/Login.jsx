@@ -33,7 +33,7 @@ function Login() {
     setLoginError(null);
     try {
       const res = await axios.post(
-        "https://eshterely-backend-production.up.railway.app/api/auth/login",
+        "observant-learning-production.up.railway.app/api/auth/login",
         {
           email: data.email,
           password: data.password,

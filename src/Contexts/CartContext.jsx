@@ -24,7 +24,7 @@ function CartProvider({ children }) {
     try {
       setIsLoading(true);
       const res = await fetch(
-        `https://eshterely-backend-production.up.railway.app/api/cart`,
+        `observant-learning-production.up.railway.app/api/cart`,
         {
           headers: { "x-auth-token": getToken() },
         }
@@ -67,7 +67,7 @@ function CartProvider({ children }) {
 
       setIsLoading(true);
       const res = await fetch(
-        `https://eshterely-backend-production.up.railway.app/api/cart`,
+        `observant-learning-production.up.railway.app/api/cart`,
         {
           method: "PUT",
           headers: {
@@ -105,7 +105,7 @@ function CartProvider({ children }) {
     try {
       setIsLoading(true);
       const res = await fetch(
-        `https://eshterely-backend-production.up.railway.app/api/cart/${productId}`,
+        `observant-learning-production.up.railway.app/api/cart/${productId}`,
         {
           method: "DELETE",
           headers: {
@@ -136,7 +136,7 @@ function CartProvider({ children }) {
   async function deleteAllFromCart() {
     try {
       const res = await fetch(
-        `https://eshterely-backend-production.up.railway.app/api/cart`,
+        `observant-learning-production.up.railway.app/api/cart`,
         {
           method: "DELETE",
           headers: {

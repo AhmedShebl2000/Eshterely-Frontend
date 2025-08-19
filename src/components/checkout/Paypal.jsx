@@ -46,7 +46,7 @@ function Paypal({ submittedData }) {
       console.log(productArr);
 
       const res = await fetch(
-        `https://eshterely-backend-production.up.railway.app/api/orders`,
+        `observant-learning-production.up.railway.app/api/orders`,
         {
           // const res = await fetch(`http://localhost:5000/api/orders`, {
           method: "POST",

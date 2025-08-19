@@ -9,7 +9,7 @@ export default function Users() {
 
   async function deleteUser(userId) {
     const token = getToken();
-    const baseURL = "https://eshterely-backend-production.up.railway.app/api";
+    const baseURL = "observant-learning-production.up.railway.app/api";
 
     try {
       const res = await fetch(`${baseURL}/users/${userId}`, {
@@ -44,7 +44,7 @@ export default function Users() {
 }
 
 export async function loader() {
-  const baseURL = "https://eshterely-backend-production.up.railway.app/api";
+  const baseURL = "observant-learning-production.up.railway.app/api";
   const res = await fetch(`${baseURL}/users`, {
     headers: {
       "Content-Type": "application/json",

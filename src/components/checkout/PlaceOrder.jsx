@@ -59,7 +59,7 @@ function PlaceOrder({ anotherDelieveryFormData, submittedData }) {
       }
 
       const res = await fetch(
-        `https://eshterely-backend-production.up.railway.app/api/orders`,
+        `observant-learning-production.up.railway.app/api/orders`,
         {
           method: "POST",
           headers: {

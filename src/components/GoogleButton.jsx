@@ -11,7 +11,7 @@ function GoogleButton() {
       onSuccess={async (credentialResponse) => {
         try {
           const res = await fetch(
-            "https://eshterely-backend-production.up.railway.app/api/auth/google",
+            "observant-learning-production.up.railway.app/api/auth/google",
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },

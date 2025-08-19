@@ -27,7 +27,7 @@ export function fetchProductByCategory(category) {
     try {
       dispatch(fetchProductsStart());
       const res = await fetch(
-        `https://eshterely-backend-production.up.railway.app/api/${category}`
+        `observant-learning-production.up.railway.app/api/${category}`
       );
 
       const data = await res.json();

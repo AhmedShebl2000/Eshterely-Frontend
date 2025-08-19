@@ -16,7 +16,7 @@ export async function loader() {
     const userId = getUserIdFromToken(token);
     console.log(userId);
     const res = await fetch(
-      `https://eshterely-backend-production.up.railway.app/api/orders?userId=${userId}`,
+      `observant-learning-production.up.railway.app/api/orders?userId=${userId}`,
       {
         headers: {
           "Content-Type": "application/json",

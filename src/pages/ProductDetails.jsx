@@ -21,7 +21,7 @@ function ProductDetails() {
 export async function loader({ params }) {
   const { category, productId } = params;
   const res = await fetch(
-    `https://eshterely-backend-production.up.railway.app/api/${category}/${productId}`
+    `observant-learning-production.up.railway.app/api/${category}/${productId}`
   );
   const data = await res.json();
   return data;

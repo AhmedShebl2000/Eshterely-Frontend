@@ -11,7 +11,7 @@ function ForgotPasswordProvider({ children }) {
     try {
       setIsLoading(true);
       const res = await fetch(
-        `https://eshterely-backend-production.up.railway.app/api/auth/forgot-password`,
+        `observant-learning-production.up.railway.app/api/auth/forgot-password`,
         {
           method: "POST",
           body: JSON.stringify({ email: userEmail }),
@@ -37,7 +37,7 @@ function ForgotPasswordProvider({ children }) {
     setIsLoading(true);
     try {
       const res = await fetch(
-        `https://eshterely-backend-production.up.railway.app/api/auth/reset-password/${token}`,
+        `observant-learning-production.up.railway.app/api/auth/reset-password/${token}`,
         {
           body: JSON.stringify({ newPassword }),
           headers: {
